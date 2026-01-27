@@ -1,99 +1,64 @@
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
-const socialLinks = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-];
-
-const footerLinks = [
-  {
-    title: 'Quick Links',
-    links: [
-      { name: 'Home', href: '#home' },
-      { name: 'Menu', href: '#menu' },
-      { name: 'About', href: '#about' },
-      { name: 'Gallery', href: '#gallery' },
-    ],
-  },
-  {
-    title: 'Contact',
-    links: [
-      { name: '123 Ethiopian Way', href: '#' },
-      { name: 'San Francisco, CA 94102', href: '#' },
-      { name: '(415) 555-0123', href: 'tel:+14155550123' },
-      { name: 'hello@awazerestaurant.com', href: 'mailto:hello@awazerestaurant.com' },
-    ],
-  },
-  {
-    title: 'Hours',
-    links: [
-      { name: 'Tuesday - Sunday', href: '#' },
-      { name: 'Lunch: 11am - 3pm', href: '#' },
-      { name: 'Dinner: 5pm - 10pm', href: '#' },
-      { name: 'Monday: Closed', href: '#' },
-    ],
-  },
+const hours = [
+  { day: 'Mon', time: '7am–2pm, 5pm–10pm' },
+  { day: 'Tue', time: 'Closed' },
+  { day: 'Wed', time: '7am–2pm, 5pm–10pm' },
+  { day: 'Thu', time: '7am–2pm, 5pm–10pm' },
+  { day: 'Fri', time: '7am–10pm' },
+  { day: 'Sat', time: '7am–10pm' },
+  { day: 'Sun', time: '7am–10pm' },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-primary-foreground pt-16 pb-8">
-      <div className="container-custom">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
+    <footer className="border-t border-border py-16">
+      <div className="container-narrow">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
+          {/* Logo & Tagline */}
           <div>
-            <h3 className="font-display text-3xl font-bold mb-4">Awaze</h3>
-            <p className="text-primary-foreground/60 text-sm leading-relaxed mb-6">
-              Experience the warmth of Ethiopian hospitality and the rich flavors 
-              of our ancestral recipes.
+            <img src={logo} alt="Awaze" className="h-8 w-auto mb-4" />
+            <p className="text-sm text-muted-foreground">
+              Modern Ethiopian · Harlem
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary transition-colors"
+          </div>
+
+          {/* Address & Phone */}
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm">2288 Frederick Douglass Blvd</p>
+              <p className="text-sm">New York, NY 10027</p>
+            </div>
+            <a href="tel:+19176393112" className="text-sm hover:text-primary transition-colors block">
+              (917) 639-3112
+            </a>
+          </div>
+
+          {/* Hours */}
+          <div>
+            <div className="space-y-1">
+              {hours.map((item) => (
+                <div 
+                  key={item.day} 
+                  className={`flex justify-between text-sm ${
+                    item.time === 'Closed' ? 'text-muted-foreground' : ''
+                  }`}
                 >
-                  <social.icon className="w-5 h-5" />
-                </a>
+                  <span>{item.day}</span>
+                  <span className="font-mono text-xs">{item.time}</span>
+                </div>
               ))}
             </div>
           </div>
-
-          {/* Links */}
-          {footerLinks.map((column) => (
-            <div key={column.title}>
-              <h4 className="font-semibold text-lg mb-4">{column.title}</h4>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-primary-foreground/60 hover:text-primary-foreground transition-colors text-sm"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/40 text-sm">
-            © {new Date().getFullYear()} Awaze Ethiopian Restaurant. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-primary-foreground/40 hover:text-primary-foreground transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-primary-foreground/40 hover:text-primary-foreground transition-colors">
-              Terms of Service
-            </a>
+        <div className="divider mb-8" />
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <p>© {new Date().getFullYear()} Awaze. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href="#" className="hover:text-foreground transition-colors">Facebook</a>
           </div>
         </div>
       </div>
