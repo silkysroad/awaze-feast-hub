@@ -2,9 +2,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import diningImage from '@/assets/dining-experience.jpg';
+import meatDish1 from '@/assets/dishes/meat-dish-1.jpg';
+import meatDish2 from '@/assets/dishes/meat-dish-2.jpg';
+import veggieDish1 from '@/assets/dishes/veggie-dish-1.jpg';
+import veggieDish2 from '@/assets/dishes/veggie-dish-2.jpg';
+import platter1 from '@/assets/dishes/platter-1.jpg';
+import combo1 from '@/assets/dishes/combo-1.jpg';
 
-const menuCategories = ['All', 'Meat', 'Vegetarian', 'Sides', 'Drinks'];
+const menuCategories = ['All', 'Meat', 'Vegetarian', 'Combos', 'Drinks'];
 
 const menuItems = [
   {
@@ -13,18 +18,21 @@ const menuItems = [
     price: '$24',
     category: 'Meat',
     featured: true,
+    image: meatDish1,
   },
   {
     name: 'Kitfo',
     description: 'Ethiopian steak tartare seasoned with mitmita spice and spiced butter',
     price: '$22',
     category: 'Meat',
+    image: meatDish2,
   },
   {
     name: 'Yebeg Tibs',
     description: 'Sautéed lamb cubes with rosemary, garlic, and jalapeño peppers',
     price: '$26',
     category: 'Meat',
+    image: meatDish1,
   },
   {
     name: 'Misir Wat',
@@ -32,37 +40,42 @@ const menuItems = [
     price: '$16',
     category: 'Vegetarian',
     featured: true,
+    image: veggieDish1,
   },
   {
     name: 'Gomen',
     description: 'Collard greens sautéed with garlic, ginger, and Ethiopian spices',
     price: '$14',
     category: 'Vegetarian',
+    image: veggieDish2,
   },
   {
     name: 'Shiro',
     description: 'Chickpea flour stew seasoned with berbere and served creamy',
     price: '$15',
     category: 'Vegetarian',
+    image: veggieDish1,
   },
   {
-    name: 'Injera',
-    description: 'Traditional spongy sourdough flatbread made from teff flour',
-    price: '$4',
-    category: 'Sides',
+    name: 'Meat Lovers Combo',
+    description: 'Doro Wat, Kitfo, and Tibs served with injera and all the fixings',
+    price: '$38',
+    category: 'Combos',
+    featured: true,
+    image: platter1,
   },
   {
-    name: 'Ayib',
-    description: 'Fresh Ethiopian cottage cheese with herbs',
-    price: '$8',
-    category: 'Sides',
+    name: 'Veggie Delight',
+    description: 'Misir Wat, Gomen, Shiro, Ayib, and Salad on a bed of injera',
+    price: '$28',
+    category: 'Combos',
+    image: combo1,
   },
   {
     name: 'Ethiopian Coffee',
     description: 'Traditional jebena coffee with full ceremony experience',
     price: '$6',
     category: 'Drinks',
-    featured: true,
   },
   {
     name: 'Tej',
@@ -130,27 +143,38 @@ export function Menu() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`bg-card rounded-2xl p-6 shadow-soft hover:shadow-warm transition-all duration-300 group ${
+              className={`bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-warm transition-all duration-300 group ${
                 item.featured ? 'ring-2 ring-accent' : ''
               }`}
             >
-              {item.featured && (
-                <span className="inline-block bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                  Chef's Favorite
-                </span>
-              )}
-              <div className="flex justify-between items-start gap-4">
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                    {item.description}
-                  </p>
+              {item.image && (
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
-                <span className="font-display text-2xl font-bold text-primary whitespace-nowrap">
-                  {item.price}
-                </span>
+              )}
+              <div className="p-6">
+                {item.featured && (
+                  <span className="inline-block bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                    Chef's Favorite
+                  </span>
+                )}
+                <div className="flex justify-between items-start gap-4">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span className="font-display text-2xl font-bold text-primary whitespace-nowrap">
+                    {item.price}
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
