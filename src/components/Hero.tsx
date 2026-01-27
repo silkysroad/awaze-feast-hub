@@ -1,11 +1,15 @@
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/Logo';
+import logo from '@/assets/logo.png';
 
 export function Hero() {
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center relative">
       <div className="container-narrow text-center">
-        <Logo className="h-24 md:h-32 lg:h-40 w-auto mx-auto mb-12" />
+        <img 
+          src={logo} 
+          alt="Awaze" 
+          className="h-24 md:h-32 lg:h-40 w-auto mx-auto mb-12"
+        />
         <p className="text-muted-foreground text-sm uppercase tracking-[0.3em] mb-12">
           Modern Ethiopian · Harlem
         </p>

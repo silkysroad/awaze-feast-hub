@@ -1,4 +1,4 @@
-import { Logo } from '@/components/Logo';
+import logo from '@/assets/logo.png';
 
 const hours = [
   { day: 'Mon', time: '7am–2pm, 5pm–10pm' },
@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Logo & Tagline */}
           <div>
-            <Logo className="h-8 w-auto mb-4" />
+            <img src={logo} alt="Awaze" className="h-8 w-auto mb-4" />
             <p className="text-sm text-muted-foreground">
               Modern Ethiopian · Harlem
             </p>
