@@ -1,16 +1,20 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import heroImage from '@/assets/hero-food.jpg';
-import interiorImage from '@/assets/restaurant-interior.jpg';
-import diningImage from '@/assets/dining-experience.jpg';
-import coffeeImage from '@/assets/coffee-ceremony.jpg';
+import platter1 from '@/assets/dishes/platter-1.jpg';
+import platter2 from '@/assets/dishes/platter-2.jpg';
+import meatDish1 from '@/assets/dishes/meat-dish-1.jpg';
+import meatDish2 from '@/assets/dishes/meat-dish-2.jpg';
+import veggieDish1 from '@/assets/dishes/veggie-dish-1.jpg';
+import combo1 from '@/assets/dishes/combo-1.jpg';
 
 const galleryImages = [
-  { src: heroImage, alt: 'Ethiopian cuisine platter', span: 'col-span-2 row-span-2' },
-  { src: interiorImage, alt: 'Restaurant ambiance', span: 'col-span-1 row-span-1' },
-  { src: coffeeImage, alt: 'Coffee ceremony', span: 'col-span-1 row-span-1' },
-  { src: diningImage, alt: 'Dining experience', span: 'col-span-2 row-span-1' },
+  { src: platter1, alt: 'Ethiopian cuisine platter with colorful stews', span: 'col-span-2 row-span-2' },
+  { src: meatDish1, alt: 'Traditional meat dish', span: 'col-span-1 row-span-1' },
+  { src: veggieDish1, alt: 'Vegetarian dishes', span: 'col-span-1 row-span-1' },
+  { src: platter2, alt: 'Full Ethiopian spread', span: 'col-span-1 row-span-1' },
+  { src: combo1, alt: 'Combo platter', span: 'col-span-1 row-span-1' },
+  { src: meatDish2, alt: 'Spiced meat stew', span: 'col-span-2 row-span-1' },
 ];
 
 export function Gallery() {
@@ -34,7 +38,7 @@ export function Gallery() {
             A Feast for the <span className="text-gradient">Eyes</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-            Step inside Awaze and discover an atmosphere where tradition meets modern elegance.
+            Discover the vibrant colors and rich textures of our authentic Ethiopian dishes.
           </p>
         </motion.div>
 

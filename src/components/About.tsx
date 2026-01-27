@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import interiorImage from '@/assets/restaurant-interior.jpg';
-import coffeeImage from '@/assets/coffee-ceremony.jpg';
+import combo2 from '@/assets/dishes/combo-2.jpg';
+import veggieDish2 from '@/assets/dishes/veggie-dish-2.jpg';
 
 export function About() {
   const ref = useRef(null);
@@ -37,8 +37,8 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <img
-                  src={interiorImage}
-                  alt="Restaurant interior"
+                  src={combo2}
+                  alt="Ethiopian platter"
                   className="rounded-2xl shadow-elevated w-full h-64 object-cover"
                 />
                 <div className="bg-primary rounded-2xl p-6 text-primary-foreground">
@@ -48,8 +48,8 @@ export function About() {
               </div>
               <div className="pt-8">
                 <img
-                  src={coffeeImage}
-                  alt="Ethiopian coffee ceremony"
+                  src={veggieDish2}
+                  alt="Vegetarian Ethiopian dishes"
                   className="rounded-2xl shadow-elevated w-full h-80 object-cover"
                 />
               </div>
