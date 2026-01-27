@@ -14,7 +14,7 @@ export function Hero() {
           Modern Ethiopian · Harlem
         </p>
         <a href="#reservations">
-          <Button variant="outline" size="lg">
+          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
             Reserve a Table
           </Button>
         </a>
@@ -23,7 +23,7 @@ export function Hero() {
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
         <a 
           href="#menu" 
-          className="text-muted-foreground text-xs uppercase tracking-widest hover:text-foreground transition-colors"
+          className="text-muted-foreground text-xs uppercase tracking-widest hover:text-primary transition-colors"
         >
           Scroll
         </a>

@@ -12,7 +12,7 @@ const hours = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-16">
+    <footer className="border-t border-primary/20 py-16">
       <div className="container-narrow">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Logo & Tagline */}
@@ -29,7 +29,7 @@ export function Footer() {
               <p className="text-sm">2288 Frederick Douglass Blvd</p>
               <p className="text-sm">New York, NY 10027</p>
             </div>
-            <a href="tel:+19176393112" className="text-sm hover:text-primary transition-colors block">
+            <a href="tel:+19176393112" className="text-sm text-primary hover:opacity-80 transition-opacity block">
               (917) 639-3112
             </a>
           </div>
@@ -45,7 +45,7 @@ export function Footer() {
                   }`}
                 >
                   <span>{item.day}</span>
-                  <span className="font-mono text-xs">{item.time}</span>
+                  <span className="font-mono text-xs text-primary">{item.time}</span>
                 </div>
               ))}
             </div>
@@ -57,8 +57,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Awaze. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
-            <a href="#" className="hover:text-foreground transition-colors">Facebook</a>
+            <a href="#" className="hover:text-primary transition-colors">Instagram</a>
+            <a href="#" className="hover:text-primary transition-colors">Facebook</a>
           </div>
         </div>
       </div>

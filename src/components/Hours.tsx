@@ -10,7 +10,7 @@ const hours = [
 
 export function Hours() {
   return (
-    <section id="hours" className="section-spacing border-t border-border">
+    <section id="hours" className="section-spacing border-t border-primary/20">
       <div className="container-narrow">
         <div className="grid md:grid-cols-2 gap-16">
           {/* Hours */}
@@ -51,7 +51,7 @@ export function Hours() {
                   href="https://maps.google.com/?q=2288+Frederick+Douglass+Blvd+New+York+NY+10027"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm uppercase tracking-widest border-b border-foreground pb-0.5 hover:text-primary hover:border-primary transition-colors"
+                  className="text-sm uppercase tracking-widest border-b border-primary pb-0.5 text-primary hover:opacity-80 transition-opacity"
                 >
                   Get Directions
                 </a>
