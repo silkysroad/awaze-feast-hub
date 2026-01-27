@@ -30,7 +30,7 @@ export function InjeraOrder() {
   const minDate = tomorrow.toISOString().split('T')[0];
 
   return (
-    <section id="injera" className="section-spacing border-t border-border">
+    <section id="injera" className="section-spacing border-t border-primary/20">
       <div className="container-narrow">
         <div className="max-w-xl">
           <h2 className="text-4xl md:text-5xl font-medium mb-4">Injera To-Go</h2>
@@ -101,7 +101,7 @@ export function InjeraOrder() {
             </div>
 
             <div className="pt-4">
-              <Button type="submit" variant="outline" className="w-full">
+              <Button type="submit" variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 Submit Order
               </Button>
             </div>

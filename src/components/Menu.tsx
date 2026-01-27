@@ -117,243 +117,156 @@ const tarts = [
 
 export function Menu() {
   return (
-    <section id="menu" className="section-spacing border-t border-border">
+    <section id="menu" className="py-16 border-t border-primary/20">
       <div className="container-narrow">
         {/* Section Header */}
-        <h2 className="text-4xl md:text-5xl font-medium mb-4">Menu</h2>
-        <p className="text-muted-foreground mb-16">Modern Ethiopian Bowls + Platters</p>
+        <h2 className="text-3xl md:text-4xl font-medium mb-2">Menu</h2>
+        <p className="text-muted-foreground text-sm mb-10">Modern Ethiopian Bowls + Platters</p>
 
-        {/* Signature Platters */}
-        <div className="mb-20">
-          <h3 className="text-xl font-medium uppercase tracking-wider mb-8 text-primary">Signature Platters</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Signature Platters - Compact Grid */}
+        <div className="mb-12">
+          <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary">Signature Platters</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {signaturePlatters.map((platter) => (
-              <div key={platter.name} className="border-t border-border pt-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-lg font-medium">{platter.name}</h4>
-                  <span className="text-xs text-muted-foreground uppercase tracking-wider">{platter.type}</span>
-                </div>
-                <ul className="text-sm text-muted-foreground space-y-1 mb-4">
-                  {platter.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-                <div className="text-xs text-muted-foreground font-mono">
-                  Rice {platter.priceRice} · Injera {platter.priceInjera} · Family {platter.priceFamily}
-                </div>
+              <div key={platter.name} className="border-l-2 border-primary/30 pl-3">
+                <h4 className="text-sm font-medium">{platter.name}</h4>
+                <p className="text-xs text-muted-foreground mb-1">{platter.type}</p>
+                <p className="text-xs font-mono text-primary">{platter.priceRice}–{platter.priceFamily}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="divider mb-20" />
+        <div className="divider mb-12" />
 
-        {/* Appetizers */}
-        <div className="mb-20">
-          <h3 className="text-xl font-medium uppercase tracking-wider mb-8 text-primary">Appetizers</h3>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+        {/* Appetizers - Three Column */}
+        <div className="mb-12">
+          <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary">Appetizers</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
             {appetizers.map((item) => (
-              <div key={item.name} className="flex justify-between gap-4">
-                <div>
-                  <h4 className="font-medium mb-1">{item.name}</h4>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
-                <span className="font-mono text-sm shrink-0">{item.price}</span>
+              <div key={item.name} className="flex justify-between text-xs">
+                <span>{item.name}</span>
+                <span className="font-mono text-primary">{item.price}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="divider mb-20" />
+        <div className="divider mb-12" />
 
-        {/* Build Your Own */}
-        <div className="mb-20">
-          <h3 className="text-xl font-medium uppercase tracking-wider mb-2 text-primary">Build Your Own</h3>
-          <p className="text-muted-foreground text-sm mb-8">Rice or w/Injera +$3</p>
+        {/* Build Your Own - Compact */}
+        <div className="mb-12">
+          <div className="flex items-baseline gap-4 mb-4">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-primary">Build Your Own</h3>
+            <span className="text-xs text-muted-foreground">Rice or w/Injera +$3</span>
+          </div>
           
-          {/* Bowls */}
-          <div className="mb-12">
-            <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Bowls</h4>
-            <div className="space-y-3">
-              {buildYourOwn.bowls.map((bowl) => (
-                <div key={bowl.name} className="flex justify-between">
-                  <div>
-                    <span className="font-medium">{bowl.name}</span>
-                    <span className="text-muted-foreground text-sm ml-2">— {bowl.desc}</span>
-                  </div>
-                  <span className="font-mono text-sm">{bowl.price}</span>
+          {/* Bowls inline */}
+          <div className="flex flex-wrap gap-4 mb-6 text-xs">
+            {buildYourOwn.bowls.map((bowl) => (
+              <span key={bowl.name}>
+                <span className="font-medium">{bowl.name}</span>
+                <span className="text-muted-foreground"> ({bowl.desc})</span>
+                <span className="font-mono text-primary ml-1">{bowl.price}</span>
+              </span>
+            ))}
+          </div>
+
+          {/* Proteins Grid */}
+          <div className="mb-6">
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Proteins</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-xs">
+              {buildYourOwn.proteins.beef.map((item) => (
+                <div key={item.name} className="flex justify-between">
+                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
+                  <span className="font-mono text-primary shrink-0">$17-18</span>
+                </div>
+              ))}
+              {buildYourOwn.proteins.chicken.map((item) => (
+                <div key={item.name} className="flex justify-between">
+                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
+                  <span className="font-mono text-primary shrink-0">$15</span>
+                </div>
+              ))}
+              {buildYourOwn.proteins.fish.map((item) => (
+                <div key={item.name} className="flex justify-between">
+                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
+                  <span className="font-mono text-primary shrink-0">$17</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Proteins */}
-          <div className="mb-12">
-            <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Step 1: Pick Your Protein</h4>
-            
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-3">Beef $17 or Lamb $18</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {buildYourOwn.proteins.beef.map((item) => (
-                  <div key={item.name}>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-3">Chicken $15</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {buildYourOwn.proteins.chicken.map((item) => (
-                  <div key={item.name}>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+          {/* Stews & Veggies Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <p className="text-xs uppercase tracking-wider text-primary mb-3">Fish $17</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {buildYourOwn.proteins.fish.map((item) => (
-                  <div key={item.name}>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Veggies/Stews */}
-          <div>
-            <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Step 2: Pick Veggies/Stew</h4>
-            
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-wider text-primary mb-3">Stews</p>
-              <div className="grid md:grid-cols-2 gap-4">
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Stews</p>
+              <div className="space-y-1 text-xs">
                 {buildYourOwn.stews.map((item) => (
-                  <div key={item.name}>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
+                  <div key={item.name}>{item.name.split(' | ')[0]}</div>
                 ))}
               </div>
             </div>
-
             <div>
-              <p className="text-xs uppercase tracking-wider text-primary mb-3">Veggies</p>
-              <div className="grid md:grid-cols-2 gap-4">
+              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Veggies</p>
+              <div className="space-y-1 text-xs">
                 {buildYourOwn.veggies.map((item) => (
-                  <div key={item.name}>
-                    <p className="font-medium text-sm">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
+                  <div key={item.name}>{item.name.split(' | ')[0]}</div>
                 ))}
               </div>
             </div>
-
-            <p className="text-sm text-muted-foreground mt-6">
-              Add-ons: Sambusas $10 · Extra Veggie $5 · Extra Protein $5
-            </p>
           </div>
         </div>
 
-        <div className="divider mb-20" />
+        <div className="divider mb-12" />
 
-        {/* Drinks */}
-        <div className="grid md:grid-cols-2 gap-16 mb-20">
+        {/* Drinks, Coffee, Cafe Mains, Patties - 4 Column Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
           <div>
-            <h3 className="text-xl font-medium uppercase tracking-wider mb-8 text-primary">Drinks</h3>
-            <div className="space-y-4">
+            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Drinks</h3>
+            <div className="space-y-1">
               {drinks.map((item) => (
-                <div key={item.name} className="flex justify-between gap-4">
-                  <div>
-                    <h4 className="font-medium text-sm">{item.name}</h4>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
-                  </div>
-                  <span className="font-mono text-sm shrink-0">{item.price}</span>
+                <div key={item.name} className="flex justify-between">
+                  <span>{item.name}</span>
+                  <span className="font-mono text-primary">{item.price}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-medium uppercase tracking-wider mb-8 text-primary">Coffee</h3>
-            <div className="space-y-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Coffee</h3>
+            <div className="space-y-1">
               {coffee.map((item) => (
                 <div key={item.name} className="flex justify-between">
-                  <span className="font-medium text-sm">{item.name}</span>
-                  <span className="font-mono text-sm">{item.price}</span>
+                  <span>{item.name}</span>
+                  <span className="font-mono text-primary">{item.price}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-4">
-              Syrups: Sugar · Stevia $0.50 · Vanilla +$0.50 · Simple Syrup +$0.50
-            </p>
           </div>
-        </div>
 
-        <div className="divider mb-20" />
-
-        {/* Cafe Mains & Patties */}
-        <div className="grid md:grid-cols-2 gap-16 mb-20">
           <div>
-            <h3 className="text-xl font-medium uppercase tracking-wider mb-2 text-primary">Cafe Mains</h3>
-            <p className="text-muted-foreground text-sm mb-8">w/Injera +$3</p>
-            <div className="space-y-6">
+            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Cafe Mains</h3>
+            <div className="space-y-1">
               {cafeMains.map((item) => (
-                <div key={item.name}>
-                  <div className="flex justify-between gap-4">
-                    <h4 className="font-medium text-sm">{item.name}</h4>
-                    <span className="font-mono text-sm shrink-0">
-                      {item.price || `Beef ${item.priceBeef} · Lamb ${item.priceLamb}`}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+                <div key={item.name} className="flex justify-between">
+                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
+                  <span className="font-mono text-primary shrink-0">{item.price || '$17'}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-medium uppercase tracking-wider mb-8 text-primary">Patties</h3>
-            <div className="mb-6">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Meat</p>
-              <div className="space-y-2">
-                {patties.meat.map((item) => (
-                  <div key={item.name} className="flex justify-between">
-                    <span className="text-sm">{item.name}</span>
-                    <span className="font-mono text-sm">{item.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Vegetarian</p>
-              <div className="space-y-2">
-                {patties.vegetarian.map((item) => (
-                  <div key={item.name} className="flex justify-between">
-                    <span className="text-sm">{item.name}</span>
-                    <span className="font-mono text-sm">{item.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <h3 className="text-xl font-medium uppercase tracking-wider mb-4 text-primary">Tarts</h3>
-              <div className="space-y-2">
-                {tarts.map((item) => (
-                  <div key={item.name} className="flex justify-between">
-                    <span className="text-sm">{item.name}</span>
-                    <span className="font-mono text-sm">{item.price}</span>
-                  </div>
-                ))}
-              </div>
+            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Patties & Tarts</h3>
+            <div className="space-y-1">
+              {[...patties.meat, ...patties.vegetarian.slice(0, 2), ...tarts].map((item) => (
+                <div key={item.name} className="flex justify-between">
+                  <span>{item.name}</span>
+                  <span className="font-mono text-primary">{item.price}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

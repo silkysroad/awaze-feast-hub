@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awaze | Modern Ethiopian · Harlem</title>
+  <meta name="description" content="Awaze - Modern Ethiopian restaurant in Harlem, NYC. Bowls, platters, and authentic Ethiopian cuisine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --background: #faf9f7;
+      --foreground: #1f1f1f;
+      --primary: #C41E3A;
+      --primary-foreground: #ffffff;
+      --muted: #f0efed;
+      --muted-foreground: #737373;
+      --border: #e0dfdc;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: var(--font-display); 
+      background: var(--background); 
+      color: var(--foreground); 
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--primary); color: var(--primary-foreground); }
+
+    .container { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 32px; } }
+
+    .section { padding: 80px 0; border-top: 1px solid rgba(196, 30, 58, 0.2); }
+    @media (min-width: 768px) { .section { padding: 128px 0; } }
+
+    .divider { width: 100%; height: 1px; background: rgba(196, 30, 58, 0.2); }
+
+    /* Header */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(250, 249, 247, 0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { height: 32px; width: auto; }
+    .nav { display: none; align-items: center; gap: 32px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+    @media (min-width: 768px) { .nav { display: flex; } }
+    .nav a { color: var(--muted-foreground); transition: color 0.2s; }
+    .nav a:hover { color: var(--primary); }
+    .nav-reserve { color: var(--primary) !important; border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
+    .mobile-reserve { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); border-bottom: 1px solid var(--primary); padding-bottom: 2px; }
+    @media (min-width: 768px) { .mobile-reserve { display: none; } }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      position: relative;
+    }
+    .hero-logo { height: 96px; width: auto; margin-bottom: 48px; }
+    @media (min-width: 768px) { .hero-logo { height: 128px; } }
+    @media (min-width: 1024px) { .hero-logo { height: 160px; } }
+    .hero-tagline { font-size: 12px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--muted-foreground); margin-bottom: 48px; }
+    .btn {
+      display: inline-block; padding: 12px 32px; font-size: 14px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      border: 1px solid var(--primary); color: var(--primary);
+      transition: all 0.2s; cursor: pointer; background: transparent;
+    }
+    .btn:hover { background: var(--primary); color: var(--primary-foreground); }
+    .scroll-hint {
+      position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--muted-foreground); transition: color 0.2s;
+    }
+    .scroll-hint:hover { color: var(--primary); }
+
+    /* Menu */
+    .section-title { font-size: 28px; margin-bottom: 8px; }
+    @media (min-width: 768px) { .section-title { font-size: 36px; } }
+    .section-subtitle { font-size: 14px; color: var(--muted-foreground); margin-bottom: 40px; }
+    .category-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 16px; }
+
+    .menu-grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (min-width: 768px) { .menu-grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+    .menu-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 24px; }
+    @media (min-width: 768px) { .menu-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    .menu-grid-2 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 768px) { .menu-grid-2 { grid-template-columns: repeat(2, 1fr); } }
+
+    .platter-card { border-left: 2px solid rgba(196, 30, 58, 0.3); padding-left: 12px; }
+    .platter-name { font-size: 14px; font-weight: 500; }
+    .platter-type { font-size: 11px; color: var(--muted-foreground); margin-bottom: 4px; }
+    .platter-price { font-family: var(--font-mono); font-size: 12px; color: var(--primary); }
+
+    .menu-item { display: flex; justify-content: space-between; font-size: 12px; }
+    .menu-item-price { font-family: var(--font-mono); color: var(--primary); flex-shrink: 0; }
+
+    .mb-48 { margin-bottom: 48px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-8 { margin-bottom: 8px; }
+
+    .text-xs { font-size: 11px; }
+    .text-sm { font-size: 13px; }
+    .text-muted { color: var(--muted-foreground); }
+    .text-primary { color: var(--primary); }
+    .uppercase { text-transform: uppercase; }
+    .tracking-wide { letter-spacing: 0.1em; }
+    .font-mono { font-family: var(--font-mono); }
+    .font-medium { font-weight: 500; }
+
+    .flex { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .gap-16 { gap: 16px; }
+    .gap-24 { gap: 24px; }
+    .justify-between { justify-content: space-between; }
+    .items-baseline { align-items: baseline; }
+
+    /* Hours & Location */
+    .hours-grid { display: grid; gap: 64px; }
+    @media (min-width: 768px) { .hours-grid { grid-template-columns: repeat(2, 1fr); } }
+    .hours-title { font-size: 28px; margin-bottom: 48px; }
+    @media (min-width: 768px) { .hours-title { font-size: 36px; } }
+    .hours-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; }
+    .hours-day { text-transform: uppercase; letter-spacing: 0.1em; }
+    .hours-time { font-family: var(--font-mono); font-size: 12px; }
+    .hours-closed { color: var(--muted-foreground); }
+    .location-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 8px; }
+    .location-text { font-size: 18px; margin-bottom: 4px; }
+    .location-link { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); border-bottom: 1px solid var(--primary); padding-bottom: 2px; display: inline-block; margin-top: 16px; }
+    .location-link:hover { opacity: 0.8; }
+    .phone-link { font-size: 18px; transition: color 0.2s; }
+    .phone-link:hover { color: var(--primary); }
+
+    /* Injera Order */
+    .form-group { margin-bottom: 24px; }
+    .form-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 8px; }
+    .form-input, .form-select {
+      width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border);
+      padding: 12px 0; font-family: var(--font-display); font-size: 16px; color: var(--foreground);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--foreground); }
+    .form-select { cursor: pointer; }
+    .form-hint { font-size: 11px; color: var(--muted-foreground); margin-top: 8px; }
+
+    /* Reservations */
+    .widget-placeholder {
+      border: 1px solid var(--border); padding: 48px; text-align: center;
+    }
+    .widget-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 16px; }
+
+    /* Footer */
+    .footer { border-top: 1px solid rgba(196, 30, 58, 0.2); padding: 64px 0; }
+    .footer-grid { display: grid; gap: 48px; margin-bottom: 48px; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+    .footer-tagline { font-size: 13px; color: var(--muted-foreground); margin-top: 16px; }
+    .footer-bottom { display: flex; flex-direction: column; gap: 16px; align-items: center; font-size: 11px; color: var(--muted-foreground); padding-top: 32px; border-top: 1px solid rgba(196, 30, 58, 0.2); }
+    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
+    .footer-social { display: flex; gap: 24px; }
+    .footer-social a:hover { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTAwIDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjUwIiB5PSIyOCIgZm9udC1mYW1pbHk9IlNwYWNlIEdyb3Rlc2siIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNDNDFFM0EiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFXQVpFPC90ZXh0Pjwvc3ZnPg==" alt="Awaze" class="logo">
+      </a>
+      <nav class="nav">
+        <a href="#menu">Menu</a>
+        <a href="#hours">Hours</a>
+        <a href="#injera">Injera</a>
+        <a href="#reservations" class="nav-reserve">Reserve</a>
+      </nav>
+      <a href="#reservations" class="mobile-reserve">Reserve</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container" style="text-align: center;">
+      <!-- Replace src with your logo.png -->
+      <img src="logo.png" alt="Awaze" class="hero-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <h1 style="display: none; font-size: 64px; color: #C41E3A; margin-bottom: 48px;">AWAZE</h1>
+      <p class="hero-tagline">Modern Ethiopian · Harlem</p>
+      <a href="#reservations" class="btn">Reserve a Table</a>
+    </div>
+    <a href="#menu" class="scroll-hint">Scroll</a>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="section" style="padding-top: 64px; padding-bottom: 64px;">
+    <div class="container">
+      <h2 class="section-title">Menu</h2>
+      <p class="section-subtitle">Modern Ethiopian Bowls + Platters</p>
+
+      <!-- Signature Platters -->
+      <div class="mb-48">
+        <h3 class="category-title">Signature Platters</h3>
+        <div class="menu-grid-4">
+          <div class="platter-card"><div class="platter-name">Lalibela</div><div class="platter-type">Beef or Lamb</div><div class="platter-price">$18–$50</div></div>
+          <div class="platter-card"><div class="platter-name">Harlem</div><div class="platter-type">Chicken</div><div class="platter-price">$18–$50</div></div>
+          <div class="platter-card"><div class="platter-name">Veggie</div><div class="platter-type">Veggie</div><div class="platter-price">$18–$50</div></div>
+          <div class="platter-card"><div class="platter-name">Danakil</div><div class="platter-type">Beef</div><div class="platter-price">$18–$50</div></div>
+        </div>
+      </div>
+
+      <div class="divider mb-48"></div>
+
+      <!-- Appetizers -->
+      <div class="mb-48">
+        <h3 class="category-title">Appetizers</h3>
+        <div class="menu-grid-3">
+          <div class="menu-item"><span>Tomato Salad</span><span class="menu-item-price">$10</span></div>
+          <div class="menu-item"><span>Avocado Salad</span><span class="menu-item-price">$10</span></div>
+          <div class="menu-item"><span>Awaze Salad</span><span class="menu-item-price">$10</span></div>
+          <div class="menu-item"><span>Tomato Fitfit</span><span class="menu-item-price">$10</span></div>
+          <div class="menu-item"><span>Sambusas</span><span class="menu-item-price">$10</span></div>
+        </div>
+      </div>
+
+      <div class="divider mb-48"></div>
+
+      <!-- Build Your Own -->
+      <div class="mb-48">
+        <div class="flex items-baseline gap-16 mb-16">
+          <h3 class="category-title" style="margin-bottom: 0;">Build Your Own</h3>
+          <span class="text-xs text-muted">Rice or w/Injera +$3</span>
+        </div>
+        <div class="flex flex-wrap gap-16 mb-24 text-xs">
+          <span><span class="font-medium">Awaze Protein</span> <span class="text-muted">(1 protein, 3 veggies/stew)</span> <span class="font-mono text-primary">$15-$18</span></span>
+          <span><span class="font-medium">Awaze Veggie</span> <span class="text-muted">(4 veggies/stews)</span> <span class="font-mono text-primary">$14</span></span>
+        </div>
+        <div class="mb-24">
+          <p class="text-xs text-muted uppercase tracking-wide mb-8">Proteins</p>
+          <div class="menu-grid-3">
+            <div class="menu-item"><span>Awaze Tibs</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Lega Tibs</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Alicha Tibs</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Tibs Wat</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Siga Wat</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Derq Tibs</span><span class="menu-item-price">$17-18</span></div>
+            <div class="menu-item"><span>Doro Tibs</span><span class="menu-item-price">$15</span></div>
+            <div class="menu-item"><span>Assa Dullet</span><span class="menu-item-price">$17</span></div>
+          </div>
+        </div>
+        <div class="menu-grid-2">
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wide mb-8">Stews</p>
+            <div class="text-xs" style="line-height: 2;">Misir Wat · Shiro · Kik Alicha</div>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wide mb-8">Veggies</p>
+            <div class="text-xs" style="line-height: 2;">Gomen · Atakilt Wat · Tikil Gomen · Keysir</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider mb-48"></div>
+
+      <!-- Drinks, Coffee, Cafe Mains, Patties -->
+      <div class="menu-grid-4 text-xs">
+        <div>
+          <h3 class="category-title">Drinks</h3>
+          <div style="line-height: 2.2;">
+            <div class="menu-item"><span>Juices & Sodas</span><span class="menu-item-price">$5</span></div>
+            <div class="menu-item"><span>Beer</span><span class="menu-item-price">$8</span></div>
+            <div class="menu-item"><span>Wines</span><span class="menu-item-price">$40</span></div>
+            <div class="menu-item"><span>Tea</span><span class="menu-item-price">$3</span></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="category-title">Coffee</h3>
+          <div style="line-height: 2.2;">
+            <div class="menu-item"><span>Espresso Shot</span><span class="menu-item-price">$3</span></div>
+            <div class="menu-item"><span>Cappuccino</span><span class="menu-item-price">$4</span></div>
+            <div class="menu-item"><span>Cortado</span><span class="menu-item-price">$4</span></div>
+            <div class="menu-item"><span>Drip</span><span class="menu-item-price">$3</span></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="category-title">Cafe Mains</h3>
+          <div style="line-height: 2.2;">
+            <div class="menu-item"><span>Veggie Platter</span><span class="menu-item-price">$14</span></div>
+            <div class="menu-item"><span>Doro Wat</span><span class="menu-item-price">$15</span></div>
+            <div class="menu-item"><span>Special Lega Tibs</span><span class="menu-item-price">$17</span></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="category-title">Patties & Tarts</h3>
+          <div style="line-height: 2.2;">
+            <div class="menu-item"><span>Lamb Awaze</span><span class="menu-item-price">$8</span></div>
+            <div class="menu-item"><span>Curry Goat</span><span class="menu-item-price">$6</span></div>
+            <div class="menu-item"><span>Jerk Chicken</span><span class="menu-item-price">$6</span></div>
+            <div class="menu-item"><span>Jackfruit</span><span class="menu-item-price">$5</span></div>
+            <div class="menu-item"><span>Blueberry Tart</span><span class="menu-item-price">$5</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours & Location -->
+  <section id="hours" class="section">
+    <div class="container">
+      <div class="hours-grid">
+        <div>
+          <h2 class="hours-title">Hours</h2>
+          <div>
+            <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
+            <div class="hours-row hours-closed"><span class="hours-day">Tuesday</span><span class="hours-time">Closed</span></div>
+            <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
+            <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
+            <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">7am–10pm</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">7am–10pm</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">7am–10pm</span></div>
+          </div>
+        </div>
+        <div>
+          <h2 class="hours-title">Location</h2>
+          <div style="margin-bottom: 24px;">
+            <p class="location-label">Address</p>
+            <p class="location-text">2288 Frederick Douglass Blvd</p>
+            <p class="location-text">New York, NY 10027</p>
+          </div>
+          <div style="margin-bottom: 24px;">
+            <p class="location-label">Phone</p>
+            <a href="tel:+19176393112" class="phone-link">(917) 639-3112</a>
+          </div>
+          <a href="https://maps.google.com/?q=2288+Frederick+Douglass+Blvd+New+York+NY+10027" target="_blank" rel="noopener noreferrer" class="location-link">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Injera Order -->
+  <section id="injera" class="section">
+    <div class="container">
+      <div style="max-width: 560px;">
+        <h2 class="section-title">Injera To-Go</h2>
+        <p class="text-muted mb-8">Pack of 10 — $20</p>
+        <p class="text-xs text-muted mb-48">Pickup only. Available next day after 2pm. Closed Tuesdays.</p>
+
+        <form id="injera-form">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-input" placeholder="(123) 456-7890" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantity (packs of 10)</label>
+            <select class="form-select" required>
+              <option value="1">1 pack — $20</option>
+              <option value="2">2 packs — $40</option>
+              <option value="3">3 packs — $60</option>
+              <option value="4">4 packs — $80</option>
+              <option value="5">5 packs — $100</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pickup Date (after 2pm)</label>
+            <input type="date" class="form-input" id="pickup-date" required>
+            <p class="form-hint">Tuesdays unavailable</p>
+          </div>
+          <div style="padding-top: 16px;">
+            <button type="submit" class="btn" style="width: 100%;">Submit Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservations -->
+  <section id="reservations" class="section">
+    <div class="container">
+      <div style="max-width: 560px;">
+        <h2 class="section-title">Reservations</h2>
+        <p class="text-muted mb-24">Book a table for up to 16 guests. For larger parties, please call us directly.</p>
+
+        <div class="widget-placeholder">
+          <p class="widget-label">Square Appointments Widget</p>
+          <p class="text-xs text-muted">Embed code goes here</p>
+          <!-- Replace with your Square Appointments embed code -->
+        </div>
+
+        <div style="margin-top: 32px;">
+          <p class="text-sm text-muted">Maximum party size: 16 guests</p>
+          <p class="text-sm text-muted" style="margin-top: 16px;">
+            For special events or large groups, call <a href="tel:+19176393112" style="color: var(--primary);">(917) 639-3112</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo.png" alt="Awaze" style="height: 32px; width: auto;" onerror="this.outerHTML='<span style=\'font-size: 24px; color: #C41E3A; font-weight: 500;\'>AWAZE</span>';">
+          <p class="footer-tagline">Modern Ethiopian · Harlem</p>
+        </div>
+        <div>
+          <p class="text-sm">2288 Frederick Douglass Blvd</p>
+          <p class="text-sm">New York, NY 10027</p>
+          <a href="tel:+19176393112" class="text-sm" style="display: block; margin-top: 16px; color: var(--primary);">(917) 639-3112</a>
+        </div>
+        <div style="font-size: 13px;">
+          <div style="display: flex; justify-content: space-between;"><span>Mon</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
+          <div style="display: flex; justify-content: space-between; color: var(--muted-foreground);"><span>Tue</span><span class="font-mono" style="font-size: 11px;">Closed</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Wed</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Thu</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Fri</span><span class="font-mono text-primary" style="font-size: 11px;">7am–10pm</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Sat</span><span class="font-mono text-primary" style="font-size: 11px;">7am–10pm</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Sun</span><span class="font-mono text-primary" style="font-size: 11px;">7am–10pm</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Awaze. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set minimum date to tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('pickup-date').min = tomorrow.toISOString().split('T')[0];
+
+    // Form submission
+    document.getElementById('injera-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const date = new Date(document.getElementById('pickup-date').value);
+      if (date.getDay() === 2) {
+        alert('Sorry, we are closed on Tuesdays. Please select another day.');
+        return;
+      }
+      alert('Order submitted! We will confirm via phone.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

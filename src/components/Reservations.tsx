@@ -1,6 +1,6 @@
 export function Reservations() {
   return (
-    <section id="reservations" className="section-spacing border-t border-border">
+    <section id="reservations" className="section-spacing border-t border-primary/20">
       <div className="container-narrow">
         <div className="max-w-xl">
           <h2 className="text-4xl md:text-5xl font-medium mb-4">Reservations</h2>
@@ -29,7 +29,7 @@ export function Reservations() {
             </p>
             <p className="text-sm text-muted-foreground">
               For special events or large groups, call{' '}
-              <a href="tel:+19176393112" className="text-foreground hover:text-primary transition-colors">
+              <a href="tel:+19176393112" className="text-primary hover:opacity-80 transition-opacity">
                 (917) 639-3112
               </a>
             </p>
