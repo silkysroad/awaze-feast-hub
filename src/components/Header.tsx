@@ -10,6 +10,7 @@ export function Header() {
         
         <nav className="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
           <a href="#menu" className="text-muted-foreground hover:text-primary transition-colors">Menu</a>
+          <a href="#photos" className="text-muted-foreground hover:text-primary transition-colors">Photos</a>
           <a href="#hours" className="text-muted-foreground hover:text-primary transition-colors">Hours</a>
           <a href="#injera" className="text-muted-foreground hover:text-primary transition-colors">Injera</a>
           <a href="#reservations" className="text-primary border-b border-primary pb-0.5 hover:opacity-80 transition-opacity">Reserve</a>
