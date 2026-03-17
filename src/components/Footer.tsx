@@ -57,8 +57,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Awaze. All rights reserved.</p>
           <div className="flex gap-6">
+            {/* TODO: Add real Instagram URL once account is set up */}
             <a href="#" className="hover:text-primary transition-colors">Instagram</a>
-            <a href="#" className="hover:text-primary transition-colors">Facebook</a>
           </div>
         </div>
       </div>
