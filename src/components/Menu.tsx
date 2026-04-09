@@ -1,7 +1,7 @@
 import veggiePlatter from '@/assets/gallery/veggie-platter.jpg';
 import beefTibsPlatter from '@/assets/gallery/beef-tibs-platter.jpg';
 import chickenTibs from '@/assets/gallery/chicken-tibs.jpg';
-import meatDish from '@/assets/gallery/meat-dish-1.jpg';
+import meatDish from '@/assets/dishes/meat-dish-1.jpg';
 import samosas from '@/assets/gallery/samosas.jpg';
 import tomatoSalad from '@/assets/gallery/tomato-salad.jpg';
 
