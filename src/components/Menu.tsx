@@ -1,32 +1,32 @@
 const signaturePlatters = [
   {
-    name: 'Lalibela',
-    type: 'Beef or Lamb',
-    items: ['Awaze Tibs | Spicy Tibsi', 'Gomen | Hamli', 'Tikil Gomen | Hmilti Alicha', 'Keysir'],
-    priceRice: '$18',
-    priceInjera: '$21',
-    priceFamily: '$50',
-  },
-  {
-    name: 'Harlem',
-    type: 'Chicken',
-    items: ['Doro Tibs | Dorho Tibsi', 'Gomen | Hamli', 'Tikil Gomen | Hmilti Alicha', 'Misir Wat | Ades'],
-    priceRice: '$18',
-    priceInjera: '$21',
-    priceFamily: '$50',
-  },
-  {
     name: 'Veggie',
-    type: 'Veggie',
-    items: ['Gomen | Hamli', 'Shiro', 'Tikil Gomen | Hmilti Alicha', 'Atakilt Wat | Hmilti Alicha'],
+    type: 'Plant-Based',
+    items: ['Gomen', 'Shiro', 'Tikil Gomen', 'Atakilt Wat', 'Misir Wat'],
     priceRice: '$18',
     priceInjera: '$21',
     priceFamily: '$50',
   },
   {
-    name: 'Danakil',
+    name: 'The Silk',
+    type: 'Beef or Lamb',
+    items: ['Awaze Tibs', 'Gomen', 'Tikil Gomen', 'Keysir'],
+    priceRice: '$18',
+    priceInjera: '$21',
+    priceFamily: '$50',
+  },
+  {
+    name: 'Fente Fire',
+    type: 'Chicken',
+    items: ['Doro Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'],
+    priceRice: '$18',
+    priceInjera: '$21',
+    priceFamily: '$50',
+  },
+  {
+    name: 'The Nubz',
     type: 'Beef',
-    items: ['Beef Derq Tibs | Beef Derq Tibsi', 'Gomen | Hamli', 'Tikil Gomen | Hmilti Alicha', 'Misir Wat | Ades'],
+    items: ['Derq Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'],
     priceRice: '$18',
     priceInjera: '$21',
     priceFamily: '$50',
@@ -34,242 +34,239 @@ const signaturePlatters = [
 ];
 
 const appetizers = [
-  { name: 'Tomato Salad', desc: 'Fresh, bright, tangy salad with ripe tomatoes, crisp onions, and fragrant herbs', price: '$10' },
-  { name: 'Avocado Salad', desc: 'Creamy and zesty with ripe avocado, bright lime juice, and smooth olive oil', price: '$10' },
-  { name: 'Awaze Salad', desc: 'Bold, zesty salad with crisp mixed greens in spicy awaze vinaigrette', price: '$10' },
-  { name: 'Tomato Fitfit', desc: 'Crispy, golden pastry shells filled with flavorful ground beef or lentils', price: '$10' },
-  { name: 'Sambusas', desc: 'Crispy pastry shells filled with ground beef or lentils, onions and jalapeño', price: '$10' },
+  { name: 'Sambusas', desc: 'Crispy pastry filled with spiced beef or lentils, onions & jalapeño', price: '$10' },
+  { name: 'Tomato Salad', desc: 'Fresh ripe tomatoes, crisp onions, fragrant herbs', price: '$10' },
+  { name: 'Avocado Salad', desc: 'Ripe avocado, bright lime, smooth olive oil', price: '$12' },
+  { name: 'Tomato Fitfit', desc: 'Torn injera tossed with tomatoes, herbs & spiced butter', price: '$12' },
 ];
 
-const buildYourOwn = {
-  bowls: [
-    { name: 'Awaze Protein', desc: '1 protein, 3 veggies/stew', price: '$15-$18' },
-    { name: 'Awaze Veggie', desc: '4 veggies/stews', price: '$14' },
+const proteins = {
+  beefLamb: [
+    { name: 'Awaze Tibs', desc: 'Beef or lamb sautéed in spicy berbere sauce', spicy: true },
+    { name: 'Lega Tibs', desc: 'Beef or lamb with onions, rosemary & jalapeño — mild', spicy: false },
+    { name: 'Derq Tibs', desc: 'Beef stir-fried with onions & jalapeño, slightly crispy', spicy: true },
+    { name: 'Tibs Wat', desc: 'Slow-cooked beef stew in rich berbere & tomato sauce', spicy: true },
+    { name: 'Kitfo', desc: 'Raw minced lean beef with mitmita & niter kibbeh', spicy: true },
   ],
-  proteins: {
-    beef: [
-      { name: 'Awaze Tibs | Awaze Tibsi', desc: 'Tender, juicy cubes of beef or lamb sautéed with tomatoes, onions, and jalapeño in bold awaze sauce' },
-      { name: 'Lega Tibs | Mild Tibsi', desc: 'Mild, tender cubes sautéed with onions, tomatoes, and jalapeño for a juicy, well-balanced dish' },
-      { name: 'Alicha Tibs | Qulwa', desc: 'Mild, comforting stew slow-cooked with garlic, onions, and turmeric' },
-      { name: 'Tibs Wat | Tibsi', desc: 'Rich, bold, spicy stew simmered with onions, garlic, tomatoes, and berbere spice' },
-      { name: 'Siga Wat | Zigni', desc: 'Robust, hearty stew made with tender meat, onions, garlic, tomatoes, and berbere' },
-      { name: 'Derq Tibs | Derq Tibsi', desc: 'Tender cubes stir-fried with fresh onions and jalapeño' },
-    ],
-    chicken: [
-      { name: 'Siga Wat | Zigni', desc: 'Robust stew with tender chicken, onions, garlic, tomatoes, and berbere' },
-      { name: 'Doro Tibs | Dorho Tibsi', desc: 'Tender, juicy boneless chicken breast sautéed with tomatoes and onions in bold awaze sauce' },
-    ],
-    fish: [
-      { name: 'Assa Dullet', desc: 'Flaky pieces of tilapia stir-fried with garlic, red onions, jalapeños, and herbs', price: '$17' },
-    ],
-  },
-  stews: [
-    { name: 'Misir Wat | Ades', desc: 'Rich, spicy, slightly tangy red lentil stew with berbere, onions, and garlic' },
-    { name: 'Shiro', desc: 'Smooth, creamy, savory chickpea puree slow-cooked with onions, garlic, and warm spices' },
-    { name: 'Kik Alicha | Alicha Ades', desc: 'Mild, comforting split pea stew slow-cooked with onions, garlic, ginger, and turmeric' },
-  ],
-  veggies: [
-    { name: 'Gomen | Hamli', desc: 'Savory, slightly bitter dish made with chopped collard greens, slow-cooked with onions and spices' },
-    { name: 'Atakilt Wat | Hmilti Alicha', desc: 'Mild aromatic vegetable dish with tender string beans and carrots, slow-cooked with turmeric' },
-    { name: 'Tikil Gomen | Hmilti Alicha', desc: 'Mildly sweet dish with tender cabbage and carrots, slow-cooked with turmeric and garlic' },
-    { name: 'Keysir', desc: 'Vibrant, sweet, earthy dish made with tender beets, slow-cooked with potatoes' },
+  chicken: [
+    { name: 'Doro Tibs', desc: 'Boneless chicken breast in spiced butter sauce', spicy: true },
+    { name: 'Doro Wat', desc: 'Classic chicken stew slow-cooked in berbere', spicy: true },
   ],
 };
 
+const stews = [
+  { name: 'Misir Wat', desc: 'Red lentil stew slow-cooked with berbere', spicy: true },
+  { name: 'Shiro', desc: 'Chickpea purée simmered with warm spices', spicy: false },
+  { name: 'Kik Alicha', desc: 'Yellow split peas with turmeric & ginger', spicy: false },
+];
+
+const veggies = [
+  { name: 'Gomen', desc: 'Collard greens slow-cooked with spices & garlic' },
+  { name: 'Tikil Gomen', desc: 'Cabbage & carrots, lightly spiced' },
+  { name: 'Atakilt Wat', desc: 'String beans & carrots in spiced sauce' },
+  { name: 'Keysir', desc: 'Beets & potatoes, earthy and mild' },
+];
+
 const drinks = [
-  { name: 'Juices & Sodas', desc: 'Coke, Diet, Mirinda, San Pelligrino, Mango Juice, Ginger Ale, Lemon', price: '$5' },
-  { name: 'Beer', desc: 'St George, Castel, Habesha, Asmara, Dashen', price: '$8' },
-  { name: 'Wines', desc: 'Red Rift Valley, Ethiopian Made in Eastern Shoa, Zeway, Oromo Region', price: '$40' },
-  { name: 'Tea', desc: 'Addis Tea, Alattar, Spicy Tea', price: '$3' },
+  { name: 'Juices & Sodas', desc: 'Coke · Diet · Mirinda · San Pellegrino · Mango Juice · Ginger Ale', price: '$4' },
+  { name: 'Beer', desc: 'St George · Castel · Habesha · Asmara · Dashen', price: '$8' },
+  { name: '✦ Ethiopian Honey Wine (Tej)', desc: 'Brewed from fermented honey & gesho. Amber, lightly bitter, naturally sweet. Ethiopia\'s oldest drink.', price: '$9 glass · $35 bottle', featured: true },
+  { name: 'Wine', desc: 'Red · White — ask your server', price: '$12 / $40' },
+  { name: 'Tea', desc: 'Addis Tea · Alattar · Spicy Tea · Peppermint · Green · Ginger', price: '$3' },
 ];
 
 const coffee = [
-  { name: 'Espresso Shot', price: '$3' },
-  { name: 'Cappucino', price: '$4' },
+  { name: 'Ethiopian Espresso', desc: 'by Buunni Coffee, Harlem · oat · whole · almond', price: '$4' },
+  { name: 'Cappuccino', price: '$4' },
   { name: 'Cortado', price: '$4' },
-  { name: 'Drip-House Blend', price: '$3' },
+  { name: 'Drip Coffee', price: '$3' },
 ];
 
-const patties = {
-  meat: [
-    { name: 'Lamb Awaze', price: '$8' },
-    { name: 'Curry Goat', price: '$6' },
-    { name: 'Jerk Chicken', price: '$6' },
-  ],
-  vegetarian: [
-    { name: 'Jackfruit', price: '$5' },
-    { name: 'Pumpkin', price: '$5' },
-    { name: 'Ackee', price: '$5' },
-    { name: 'Lentil & Chickpea', price: '$5' },
-  ],
-};
-
-const cafeMains = [
-  { name: 'Veggie Platter', desc: 'Traditional vegetarian sampler of tender lentils, spiced chickpeas, turmeric-kissed cabbage, carrots, potatoes, beets and sautéed greens', price: '$14' },
-  { name: 'Doro Wat | Dorho Tsebhi', desc: 'Classic stew of tender chicken breast stewed with spicy berbere, sauced onion, ginger, garlic and served with a hard-boiled egg', price: '$15' },
-  { name: 'Special Lega Tibs | Mild Tibsi', desc: 'Mild, tender cubes of beef or lamb sautéed with onions, tomatoes, and jalapeño', priceBeef: '$17', priceLamb: '$18' },
-];
-
-const tarts = [
-  { name: 'Blueberry', price: '$5' },
-  { name: 'Apple', price: '$5' },
+const patties = [
+  { name: 'Lamb Awaze', price: '$8' },
+  { name: 'Curry Goat', price: '$6' },
+  { name: 'Jerk Chicken', price: '$6' },
+  { name: 'Jackfruit / Lentil', price: '$5' },
+  { name: 'Blueberry Tart', price: '$5' },
+  { name: 'Apple Tart', price: '$5' },
 ];
 
 export function Menu() {
   return (
-    <section id="menu" className="py-16 border-t border-primary/20">
+    <section id="menu" className="py-16 border-t border-primary/20" style={{ background: '#F5F0E8' }}>
       <div className="container-narrow">
-        {/* Section Header */}
-        <h2 className="text-3xl md:text-4xl font-medium mb-2">Menu</h2>
-        <p className="text-muted-foreground text-sm mb-10">Modern Ethiopian Bowls + Platters</p>
 
-        {/* Signature Platters - Compact Grid */}
+        {/* Header */}
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-medium mb-1" style={{ fontFamily: "'Space Mono', monospace" }}>Menu</h2>
+          <p className="text-sm text-muted-foreground">Seed Oil Free · Avocado Oil · Butter &amp; Love</p>
+        </div>
+
+        {/* The Chef's Signatures */}
         <div className="mb-12">
-          <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary">Signature Platters</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-5" style={{ fontFamily: "'Space Mono', monospace", letterSpacing: '0.2em' }}>The Chef's Signatures</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {signaturePlatters.map((platter) => (
-              <div key={platter.name} className="border-l-2 border-primary/30 pl-3">
-                <h4 className="text-sm font-medium">{platter.name}</h4>
-                <p className="text-xs text-muted-foreground mb-1">{platter.type}</p>
-                <p className="text-xs font-mono text-primary">{platter.priceRice}–{platter.priceFamily}</p>
+              <div key={platter.name} className="flex flex-col gap-1">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider" style={{ fontFamily: "'Space Mono', monospace" }}>{platter.type}</p>
+                <h4 className="text-2xl font-bold leading-tight" style={{ fontFamily: "'Space Mono', monospace" }}>{platter.name}</h4>
+                <div className="w-5 h-0.5 bg-red-600 my-1" />
+                <p className="text-xs text-muted-foreground italic leading-relaxed">{platter.items.join(' · ')}</p>
+                <p className="text-xs font-bold text-red-600 mt-1" style={{ fontFamily: "'Space Mono', monospace" }}>Rice {platter.priceRice} · Injera {platter.priceInjera} · Family {platter.priceFamily}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="divider mb-12" />
+        <div className="divider mb-10" />
 
-        {/* Appetizers - Three Column */}
-        <div className="mb-12">
-          <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary">Appetizers</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
+        {/* Appetizers */}
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-widest text-red-600 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Appetizers</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {appetizers.map((item) => (
-              <div key={item.name} className="flex justify-between text-xs">
-                <span>{item.name}</span>
-                <span className="font-mono text-primary">{item.price}</span>
+              <div key={item.name} className="flex flex-col gap-0.5">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-sm font-semibold">{item.name}</span>
+                  <span className="text-xs font-bold text-red-600 ml-2" style={{ fontFamily: "'Space Mono', monospace" }}>{item.price}</span>
+                </div>
+                <p className="text-xs text-muted-foreground italic">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="divider mb-12" />
+        <div className="divider mb-10" />
 
-        {/* Build Your Own - Compact */}
-        <div className="mb-12">
-          <div className="flex items-baseline gap-4 mb-4">
-            <h3 className="text-sm font-medium uppercase tracking-wider text-primary">Build Your Own</h3>
-            <span className="text-xs text-muted-foreground">Rice or w/Injera +$3</span>
-          </div>
-          
-          {/* Bowls inline */}
-          <div className="flex flex-wrap gap-4 mb-6 text-xs">
-            {buildYourOwn.bowls.map((bowl) => (
-              <span key={bowl.name}>
-                <span className="font-medium">{bowl.name}</span>
-                <span className="text-muted-foreground"> ({bowl.desc})</span>
-                <span className="font-mono text-primary ml-1">{bowl.price}</span>
-              </span>
-            ))}
-          </div>
+        {/* Build Your Own */}
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-widest text-red-600 mb-1" style={{ fontFamily: "'Space Mono', monospace" }}>Build Your Own</p>
+          <p className="text-xs text-muted-foreground mb-5">
+            <strong>Awaze Protein</strong> — 1 protein + 3 veggies/stews <span className="text-red-600 font-bold">$20–21</span>
+            &nbsp;·&nbsp;
+            <strong>Awaze Veggie</strong> — any 4 veggies/stews <span className="text-red-600 font-bold">$20</span>
+            &nbsp;·&nbsp;
+            <strong>Awaze Family</strong> — 1 protein + 5 sides <span className="text-red-600 font-bold">$50</span>
+            <br />
+            <span className="text-muted-foreground">With injera or rice +$3 · Family: injera included</span>
+          </p>
 
-          {/* Proteins Grid */}
-          <div className="mb-6">
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Proteins</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-xs">
-              {buildYourOwn.proteins.beef.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
-                  <span className="font-mono text-primary shrink-0">$17-18</span>
-                </div>
-              ))}
-              {buildYourOwn.proteins.chicken.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
-                  <span className="font-mono text-primary shrink-0">$15</span>
-                </div>
-              ))}
-              {buildYourOwn.proteins.fish.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
-                  <span className="font-mono text-primary shrink-0">$17</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Stews & Veggies Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Proteins */}
             <div>
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Stews</p>
-              <div className="space-y-1 text-xs">
-                {buildYourOwn.stews.map((item) => (
-                  <div key={item.name}>{item.name.split(' | ')[0]}</div>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3" style={{ fontFamily: "'Space Mono', monospace" }}>Beef / Lamb <span className="text-red-600">$20</span></p>
+              <div className="space-y-2">
+                {proteins.beefLamb.map((item) => (
+                  <div key={item.name} className="flex items-start gap-2">
+                    <div className="flex-1">
+                      <span className="text-sm font-semibold">{item.name}</span>
+                      {item.spicy && <span className="ml-2 text-xs font-bold text-red-600 border border-red-600 rounded px-1 py-px" style={{ fontSize: '9px', letterSpacing: '0.08em' }}>SPICY</span>}
+                      <p className="text-xs text-muted-foreground italic">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-5 mb-3" style={{ fontFamily: "'Space Mono', monospace" }}>Chicken <span className="text-red-600">$21</span></p>
+              <div className="space-y-2">
+                {proteins.chicken.map((item) => (
+                  <div key={item.name}>
+                    <span className="text-sm font-semibold">{item.name}</span>
+                    {item.spicy && <span className="ml-2 text-xs font-bold text-red-600 border border-red-600 rounded px-1 py-px" style={{ fontSize: '9px', letterSpacing: '0.08em' }}>SPICY</span>}
+                    <p className="text-xs text-muted-foreground italic">{item.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>
+
+            {/* Stews + Veggies */}
             <div>
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Veggies</p>
-              <div className="space-y-1 text-xs">
-                {buildYourOwn.veggies.map((item) => (
-                  <div key={item.name}>{item.name.split(' | ')[0]}</div>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3" style={{ fontFamily: "'Space Mono', monospace" }}>Stews</p>
+              <div className="space-y-2 mb-6">
+                {stews.map((item) => (
+                  <div key={item.name}>
+                    <span className="text-sm font-semibold">{item.name}</span>
+                    {item.spicy && <span className="ml-2 text-xs font-bold text-red-600 border border-red-600 rounded px-1 py-px" style={{ fontSize: '9px', letterSpacing: '0.08em' }}>SPICY</span>}
+                    <p className="text-xs text-muted-foreground italic">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3" style={{ fontFamily: "'Space Mono', monospace" }}>Vegetables</p>
+              <div className="space-y-2">
+                {veggies.map((item) => (
+                  <div key={item.name}>
+                    <span className="text-sm font-semibold">{item.name}</span>
+                    <p className="text-xs text-muted-foreground italic">{item.desc}</p>
+                  </div>
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Add-ons */}
+          <div className="mt-5 pt-4 border-t border-primary/20">
+            <p className="text-xs text-red-600 font-bold" style={{ fontFamily: "'Space Mono', monospace" }}>+ Extra Veggie $5 · + Extra Protein $5</p>
+            <p className="text-sm font-bold text-red-600 mt-1" style={{ fontFamily: "'Space Mono', monospace" }}>+ Gluten-Free Injera $5</p>
           </div>
         </div>
 
-        <div className="divider mb-12" />
+        <div className="divider mb-10" />
 
-        {/* Drinks, Coffee, Cafe Mains, Patties - 4 Column Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs">
+        {/* Drinks + Coffee + Patties */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+
+          {/* Drinks */}
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Drinks</h3>
-            <div className="space-y-1">
+            <p className="text-xs uppercase tracking-widest text-red-600 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Drinks</p>
+            <div className="space-y-3">
               {drinks.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span>{item.name}</span>
-                  <span className="font-mono text-primary">{item.price}</span>
+                <div key={item.name} className={item.featured ? 'p-3 border border-red-600/40 rounded' : ''} style={item.featured ? { background: '#FFF8F2' } : {}}>
+                  <div className="flex justify-between items-baseline">
+                    <span className={`font-semibold ${item.featured ? 'text-red-700' : ''}`}>{item.name}</span>
+                    <span className="text-xs font-bold text-red-600 ml-2 shrink-0" style={{ fontFamily: "'Space Mono', monospace" }}>{item.price}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic mt-0.5">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
 
+          {/* Coffee */}
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Coffee</h3>
-            <div className="space-y-1">
+            <p className="text-xs uppercase tracking-widest text-red-600 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Signature Coffee</p>
+            <div className="space-y-2">
               {coffee.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span>{item.name}</span>
-                  <span className="font-mono text-primary">{item.price}</span>
+                <div key={item.name} className="flex justify-between items-baseline">
+                  <div>
+                    <span className="font-semibold">{item.name}</span>
+                    {item.desc && <p className="text-xs text-muted-foreground italic">{item.desc}</p>}
+                  </div>
+                  <span className="text-xs font-bold text-red-600 ml-2 shrink-0" style={{ fontFamily: "'Space Mono', monospace" }}>{item.price}</span>
                 </div>
               ))}
             </div>
           </div>
 
+          {/* Patties & Tarts */}
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Cafe Mains</h3>
-            <div className="space-y-1">
-              {cafeMains.map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span className="truncate pr-2">{item.name.split(' | ')[0]}</span>
-                  <span className="font-mono text-primary shrink-0">{item.price || '$17'}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider mb-3 text-primary">Patties & Tarts</h3>
-            <div className="space-y-1">
-              {[...patties.meat, ...patties.vegetarian.slice(0, 2), ...tarts].map((item) => (
-                <div key={item.name} className="flex justify-between">
-                  <span>{item.name}</span>
-                  <span className="font-mono text-primary">{item.price}</span>
+            <p className="text-xs uppercase tracking-widest text-red-600 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Patties &amp; Tarts</p>
+            <div className="space-y-2">
+              {patties.map((item) => (
+                <div key={item.name} className="flex justify-between items-baseline">
+                  <span className="font-semibold">{item.name}</span>
+                  <span className="text-xs font-bold text-red-600 ml-2 shrink-0" style={{ fontFamily: "'Space Mono', monospace" }}>{item.price}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        {/* Footer note */}
+        <div className="mt-10 pt-6 border-t border-primary/20">
+          <p className="text-xs text-muted-foreground text-center italic">
+            All items cooked in avocado oil, butter &amp; love. No seed oils. Please inform your server of any allergies.
+          </p>
+        </div>
+
       </div>
     </section>
   );
