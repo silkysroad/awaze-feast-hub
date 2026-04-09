@@ -6,38 +6,10 @@ import samosas from '@/assets/gallery/samosas.jpg';
 import tomatoSalad from '@/assets/gallery/tomato-salad.jpg';
 
 const signatures = [
-  {
-    name: 'Veggie',
-    protein: 'Plant-Based',
-    items: ['Gomen', 'Shiro', 'Tikil Gomen', 'Atakilt Wat', 'Misir Wat'],
-    price: 'Rice $18 · Injera $21 · Family $50',
-    photo: veggiePlatter,
-    desc: 'A full spread of our finest vegetable dishes and stews — rich, spiced, and deeply satisfying.',
-  },
-  {
-    name: 'The Silk',
-    protein: 'Beef or Lamb',
-    items: ['Awaze Tibs', 'Gomen', 'Tikil Gomen', 'Keysir'],
-    price: 'Rice $18 · Injera $21 · Family $50',
-    photo: beefTibsPlatter,
-    desc: 'Bold berbere-spiced tibs alongside classic sides. The house favorite.',
-  },
-  {
-    name: 'Fente Fire',
-    protein: 'Chicken',
-    items: ['Doro Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'],
-    price: 'Rice $18 · Injera $21 · Family $50',
-    photo: chickenTibs,
-    desc: 'Boneless chicken in a spiced butter sauce with earthy sides — warm and bright.',
-  },
-  {
-    name: 'The Nubz',
-    protein: 'Beef',
-    items: ['Derq Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'],
-    price: 'Rice $18 · Injera $21 · Family $50',
-    photo: meatDish,
-    desc: 'Stir-fried beef with onions and jalapeño — slightly crispy, deeply savory.',
-  },
+  { name: 'Veggie', protein: 'Plant-Based', items: ['Gomen', 'Shiro', 'Tikil Gomen', 'Atakilt Wat', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: veggiePlatter, desc: 'A full spread of our finest vegetable dishes and stews — rich, spiced, and deeply satisfying.' },
+  { name: 'The Silk', protein: 'Beef or Lamb', items: ['Awaze Tibs', 'Gomen', 'Tikil Gomen', 'Keysir'], price: 'Rice $18 · Injera $21 · Family $50', photo: beefTibsPlatter, desc: 'Bold berbere-spiced tibs alongside classic sides. The house favorite.' },
+  { name: 'Fente Fire', protein: 'Chicken', items: ['Doro Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: chickenTibs, desc: 'Boneless chicken in a spiced butter sauce with earthy sides.' },
+  { name: 'The Nubz', protein: 'Beef', items: ['Derq Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: meatDish, desc: 'Stir-fried beef with onions and jalapeño — slightly crispy, deeply savory.' },
 ];
 
 const appetizers = [
@@ -75,10 +47,10 @@ const veggies = [
 ];
 
 const drinks = [
-  { name: 'Juices & Sodas', desc: 'Coke · Diet · Mirinda · San Pellegrino · Mango Juice · Ginger Ale', price: '$4', featured: false },
-  { name: 'Beer', desc: 'St George · Castel · Habesha · Asmara · Dashen', price: '$8', featured: false },
-  { name: 'Wine', desc: 'Red · White — ask your server', price: '$12 / $40', featured: false },
-  { name: 'Tea', desc: 'Addis Tea · Alattar · Spicy Tea · Peppermint · Green · Ginger', price: '$3', featured: false },
+  { name: 'Juices & Sodas', desc: 'Coke · Diet · Mirinda · San Pellegrino · Mango Juice · Ginger Ale', price: '$4' },
+  { name: 'Beer', desc: 'St George · Castel · Habesha · Asmara · Dashen', price: '$8' },
+  { name: 'Wine', desc: 'Red · White — ask your server', price: '$12 / $40' },
+  { name: 'Tea', desc: 'Addis Tea · Alattar · Spicy Tea · Peppermint · Green · Ginger', price: '$3' },
 ];
 
 const coffee = [
@@ -97,291 +69,213 @@ const patties = [
   { name: 'Apple Tart', price: '$5' },
 ];
 
-const MONO = "'Space Mono', monospace";
-const RED = '#ED2E2E';
-const DARK = '#1A1A1A';
-const CREAM = '#F5F0E8';
-
 function SpicyBadge() {
   return (
     <span style={{
-      display: 'inline-block',
-      fontFamily: MONO,
-      fontSize: '8px',
-      fontWeight: 700,
-      letterSpacing: '0.08em',
-      color: RED,
-      border: `1px solid ${RED}`,
-      borderRadius: '2px',
-      padding: '0 3px',
-      marginLeft: '6px',
-      verticalAlign: 'middle',
-      lineHeight: '1.6',
+      display: 'inline-block', fontFamily: "'Space Mono', monospace",
+      fontSize: '8px', fontWeight: 700, letterSpacing: '0.08em',
+      color: '#ED2E2E', border: '1px solid #ED2E2E', borderRadius: '2px',
+      padding: '0 3px', marginLeft: '6px', verticalAlign: 'middle', lineHeight: '1.7',
     }}>SPICY</span>
+  );
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#ED2E2E', marginBottom: '1.25rem' }}>
+      {children}
+    </p>
+  );
+}
+
+function SubLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#888', marginBottom: '0.75rem', paddingBottom: '6px', borderBottom: '1px solid #ddd' }}>
+      {children}
+    </p>
   );
 }
 
 export function Menu() {
   return (
-    <section id="menu" style={{ background: CREAM }}>
+    <section id="menu" style={{ background: '#F5F0E8' }}>
 
-      {/* ── HEADER ── */}
-      <div style={{ padding: '5rem 0 2rem', textAlign: 'center' }}>
-        <p style={{ fontFamily: MONO, fontSize: '10px', letterSpacing: '0.25em', textTransform: 'uppercase', color: RED, marginBottom: '12px' }}>
+      {/* HEADER */}
+      <div style={{ padding: '3.5rem 1.25rem 1.5rem', textAlign: 'center' }}>
+        <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#ED2E2E', marginBottom: '10px' }}>
           Seed Oil Free · Avocado Oil · Butter &amp; Love
         </p>
-        <h2 style={{ fontFamily: MONO, fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: DARK, letterSpacing: '-0.02em', lineHeight: 1 }}>
+        <h2 style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(2.2rem, 10vw, 4rem)', fontWeight: 700, color: '#1A1A1A', letterSpacing: '-0.02em', lineHeight: 1 }}>
           Menu
         </h2>
       </div>
 
-      {/* ── SIGNATURES ── */}
-      <div className="container-narrow" style={{ paddingBottom: '4rem' }}>
-        <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '2.5rem', textAlign: 'center' }}>
-          The Chef's Signatures
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-          {signatures.map((sig, i) => (
-            <div key={sig.name} style={{
-              display: 'grid',
-              gridTemplateColumns: i % 2 === 0 ? '1fr 1fr' : '1fr 1fr',
-              minHeight: '380px',
-              borderTop: `1px solid #d8d0c8`,
-            }}>
-              {/* Photo */}
-              <div style={{ order: i % 2 === 0 ? 0 : 1, overflow: 'hidden' }}>
-                <img
-                  src={sig.photo}
-                  alt={sig.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(0.92) contrast(1.04)' }}
-                />
-              </div>
-              {/* Text */}
-              <div style={{
-                order: i % 2 === 0 ? 1 : 0,
-                padding: '3rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                gap: '1rem',
-                background: i % 2 === 0 ? CREAM : '#FFFFFF',
-              }}>
-                <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#888' }}>
-                  {sig.protein}
-                </p>
-                <h3 style={{ fontFamily: MONO, fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, color: DARK, lineHeight: 1, letterSpacing: '-0.02em' }}>
-                  {sig.name}
-                </h3>
-                <div style={{ width: '28px', height: '2px', background: RED }} />
-                <p style={{ fontSize: '13px', color: '#666', fontStyle: 'italic', lineHeight: 1.6 }}>
-                  {sig.desc}
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {sig.items.map(item => (
-                    <li key={item} style={{ fontSize: '12px', color: '#444', lineHeight: 1.8 }}>
-                      <span style={{ color: RED, marginRight: '6px' }}>—</span>{item}
-                    </li>
-                  ))}
-                </ul>
-                <p style={{ fontFamily: MONO, fontSize: '10px', color: RED, marginTop: '0.5rem' }}>
-                  {sig.price}
-                </p>
+      {/* SIGNATURES */}
+      <div style={{ padding: '0 0 3rem' }}>
+        <div style={{ textAlign: 'center', padding: '0 1.25rem 1.5rem' }}>
+          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888' }}>The Chef's Signatures</p>
+        </div>
+        {signatures.map((sig, i) => (
+          <div key={sig.name} style={{ borderTop: '1px solid #d8d0c8' }}>
+            {/* Photo — always on top on mobile */}
+            <div style={{ height: 'clamp(220px, 55vw, 380px)', overflow: 'hidden' }}>
+              <img src={sig.photo} alt={sig.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(0.92) contrast(1.04)' }} />
+            </div>
+            {/* Text */}
+            <div style={{ padding: '1.75rem 1.25rem', background: i % 2 === 0 ? '#F5F0E8' : '#FFFFFF' }}>
+              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '8px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#888', marginBottom: '6px' }}>{sig.protein}</p>
+              <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(1.75rem, 8vw, 2.5rem)', fontWeight: 700, color: '#1A1A1A', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '10px' }}>{sig.name}</h3>
+              <div style={{ width: '24px', height: '2px', background: '#ED2E2E', marginBottom: '12px' }} />
+              <p style={{ fontSize: '13px', color: '#666', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '12px' }}>{sig.desc}</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 12px' }}>
+                {sig.items.map(item => (
+                  <li key={item} style={{ fontSize: '13px', color: '#444', lineHeight: 1.9 }}>
+                    <span style={{ color: '#ED2E2E', marginRight: '6px' }}>—</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '11px', color: '#ED2E2E', fontWeight: 700 }}>{sig.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* APPETIZERS */}
+      <div style={{ background: '#FFFFFF', padding: '3rem 1.25rem' }}>
+        <SectionLabel>Appetizers</SectionLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {appetizers.map(app => (
+            <div key={app.name} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+              {app.photo && (
+                <div style={{ width: '80px', height: '80px', flexShrink: 0, overflow: 'hidden', borderRadius: '2px' }}>
+                  <img src={app.photo} alt={app.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+              )}
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3px' }}>
+                  <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{app.name}</span>
+                  <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '12px', color: '#ED2E2E', marginLeft: '8px', whiteSpace: 'nowrap' }}>{app.price}</span>
+                </div>
+                <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', lineHeight: 1.5 }}>{app.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── APPETIZERS ── */}
-      <div style={{ background: '#FFFFFF', padding: '4rem 0' }}>
-        <div className="container-narrow">
-          <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: RED, marginBottom: '2rem' }}>
-            Appetizers
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
-            {appetizers.map(app => (
-              <div key={app.name} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {app.photo && (
-                  <div style={{ height: '180px', overflow: 'hidden' }}>
-                    <img src={app.photo} alt={app.name} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(0.92)' }} />
-                  </div>
-                )}
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                    <span style={{ fontWeight: 700, fontSize: '14px', color: DARK }}>{app.name}</span>
-                    <span style={{ fontFamily: MONO, fontSize: '12px', color: RED, marginLeft: '12px' }}>{app.price}</span>
-                  </div>
-                  <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', lineHeight: 1.5 }}>{app.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* BUILD YOUR OWN */}
+      <div style={{ background: '#F5F0E8', padding: '3rem 1.25rem' }}>
+        <SectionLabel>Build Your Own</SectionLabel>
+        <p style={{ fontSize: '13px', color: '#555', marginBottom: '1.75rem', lineHeight: 1.7 }}>
+          <strong>Awaze Protein</strong> — 1 protein + 3 veggies/stews <span style={{ fontFamily: "'Space Mono', monospace", color: '#ED2E2E' }}>$20–21</span><br />
+          <strong>Awaze Veggie</strong> — any 4 veggies/stews <span style={{ fontFamily: "'Space Mono', monospace", color: '#ED2E2E' }}>$20</span><br />
+          <strong>Awaze Family</strong> — 1 protein + 5 sides <span style={{ fontFamily: "'Space Mono', monospace", color: '#ED2E2E' }}>$50</span><br />
+          <span style={{ color: '#888', fontSize: '12px' }}>With injera or rice +$3 · Family: injera included</span>
+        </p>
+
+        {/* Proteins */}
+        <SubLabel>Beef / Lamb <span style={{ color: '#ED2E2E' }}>$20</span></SubLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.75rem' }}>
+          {proteins.beefLamb.map(item => (
+            <div key={item.name}>
+              <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+              {item.spicy && <SpicyBadge />}
+              <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', marginTop: '2px' }}>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <SubLabel>Chicken <span style={{ color: '#ED2E2E' }}>$21</span></SubLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.75rem' }}>
+          {proteins.chicken.map(item => (
+            <div key={item.name}>
+              <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+              {item.spicy && <SpicyBadge />}
+              <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', marginTop: '2px' }}>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <SubLabel>Stews</SubLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.75rem' }}>
+          {stews.map(item => (
+            <div key={item.name}>
+              <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+              {item.spicy && <SpicyBadge />}
+              <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', marginTop: '2px' }}>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <SubLabel>Vegetables</SubLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem', marginBottom: '1.75rem' }}>
+          {veggies.map(item => (
+            <div key={item.name}>
+              <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+              <p style={{ fontSize: '12px', color: '#777', fontStyle: 'italic', marginTop: '2px' }}>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ paddingTop: '1.25rem', borderTop: '1px solid #d8d0c8' }}>
+          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '12px', color: '#ED2E2E', fontWeight: 700 }}>+ Extra Veggie $5 &nbsp;·&nbsp; + Extra Protein $5</p>
+          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '14px', color: '#ED2E2E', fontWeight: 700, marginTop: '6px' }}>+ Gluten-Free Injera &nbsp;$5</p>
         </div>
       </div>
 
-      {/* ── BUILD YOUR OWN ── */}
-      <div style={{ background: CREAM, padding: '4rem 0' }}>
-        <div className="container-narrow">
-          <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: RED, marginBottom: '0.5rem' }}>
-            Build Your Own
-          </p>
-          <p style={{ fontSize: '13px', color: '#555', marginBottom: '2rem', lineHeight: 1.6 }}>
-            <strong>Awaze Protein</strong> — 1 protein + 3 veggies/stews <span style={{ fontFamily: MONO, color: RED }}>$20–21</span>
-            &nbsp;·&nbsp;
-            <strong>Awaze Veggie</strong> — any 4 veggies/stews <span style={{ fontFamily: MONO, color: RED }}>$20</span>
-            &nbsp;·&nbsp;
-            <strong>Awaze Family</strong> — 1 protein + 5 sides <span style={{ fontFamily: MONO, color: RED }}>$50</span>
-            <br />
-            <span style={{ color: '#888', fontSize: '12px' }}>With injera or rice +$3 · Family: injera included</span>
-          </p>
+      {/* TEJ */}
+      <div style={{ background: '#1A1A1A', padding: '3rem 1.25rem' }}>
+        <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#ED2E2E', marginBottom: '1rem' }}>✦ Ethiopia's Oldest Drink</p>
+        <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(1.75rem, 8vw, 2.5rem)', fontWeight: 700, color: '#F5F0E8', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+          Ethiopian<br />Honey Wine
+        </h3>
+        <p style={{ fontSize: '14px', color: '#aaa', lineHeight: 1.8, marginBottom: '1.25rem' }}>
+          Tej is brewed from fermented honey and gesho — Ethiopia's native buckthorn. Amber in color, lightly bitter, naturally sweet. Nothing else on the menu tastes like it.
+        </p>
+        <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '13px', color: '#ED2E2E', fontWeight: 700, marginBottom: '2rem' }}>$9 glass &nbsp;·&nbsp; $35 bottle</p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
-            {/* Proteins */}
-            <div>
-              <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem', borderBottom: '1px solid #ddd', paddingBottom: '6px' }}>
-                Beef / Lamb <span style={{ color: RED }}>$20</span>
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                {proteins.beefLamb.map(item => (
-                  <div key={item.name}>
-                    <div style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>
-                      {item.name}{item.spicy && <SpicyBadge />}
-                    </div>
-                    <div style={{ fontSize: '12px', color: '#777', fontStyle: 'italic' }}>{item.desc}</div>
-                  </div>
-                ))}
+        <div style={{ borderTop: '1px solid #2a2a2a', paddingTop: '1.5rem' }}>
+          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#555', marginBottom: '1rem' }}>Other Drinks</p>
+          {drinks.map(item => (
+            <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '10px 0', borderBottom: '1px solid #2a2a2a' }}>
+              <div>
+                <span style={{ fontSize: '13px', color: '#ccc', fontWeight: 600 }}>{item.name}</span>
+                <p style={{ fontSize: '11px', color: '#555', fontStyle: 'italic' }}>{item.desc}</p>
               </div>
-              <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem', borderBottom: '1px solid #ddd', paddingBottom: '6px' }}>
-                Chicken <span style={{ color: RED }}>$21</span>
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {proteins.chicken.map(item => (
-                  <div key={item.name}>
-                    <div style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>
-                      {item.name}{item.spicy && <SpicyBadge />}
-                    </div>
-                    <div style={{ fontSize: '12px', color: '#777', fontStyle: 'italic' }}>{item.desc}</div>
-                  </div>
-                ))}
-              </div>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '11px', color: '#ED2E2E', marginLeft: '12px', whiteSpace: 'nowrap', flexShrink: 0 }}>{item.price}</span>
             </div>
-
-            {/* Stews + Veggies */}
-            <div>
-              <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem', borderBottom: '1px solid #ddd', paddingBottom: '6px' }}>
-                Stews
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                {stews.map(item => (
-                  <div key={item.name}>
-                    <div style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>
-                      {item.name}{item.spicy && <SpicyBadge />}
-                    </div>
-                    <div style={{ fontSize: '12px', color: '#777', fontStyle: 'italic' }}>{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-              <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem', borderBottom: '1px solid #ddd', paddingBottom: '6px' }}>
-                Vegetables
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {veggies.map(item => (
-                  <div key={item.name}>
-                    <div style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>{item.name}</div>
-                    <div style={{ fontSize: '12px', color: '#777', fontStyle: 'italic' }}>{item.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Add-ons */}
-          <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #d8d0c8' }}>
-            <p style={{ fontFamily: MONO, fontSize: '11px', color: RED, fontWeight: 700 }}>
-              + Extra Veggie $5 &nbsp;·&nbsp; + Extra Protein $5
-            </p>
-            <p style={{ fontFamily: MONO, fontSize: '13px', color: RED, fontWeight: 700, marginTop: '6px' }}>
-              + Gluten-Free Injera &nbsp;$5
-            </p>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* ── TEJ FEATURE ── */}
-      <div style={{ background: DARK, padding: '4rem 0' }}>
-        <div className="container-narrow">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-            <div>
-              <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: RED, marginBottom: '1rem' }}>
-                ✦ Ethiopia's Oldest Drink
-              </p>
-              <h3 style={{ fontFamily: MONO, fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 700, color: CREAM, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-                Ethiopian<br />Honey Wine
-              </h3>
-              <p style={{ fontSize: '14px', color: '#aaa', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                Tej is brewed from fermented honey and gesho — Ethiopia's native buckthorn. Amber in color, lightly bitter, naturally sweet. Nothing else on the menu tastes like it.
-              </p>
-              <p style={{ fontFamily: MONO, fontSize: '12px', color: RED, fontWeight: 700 }}>
-                $9 glass &nbsp;·&nbsp; $35 bottle
-              </p>
+      {/* COFFEE + PATTIES */}
+      <div style={{ background: '#FFFFFF', padding: '3rem 1.25rem' }}>
+        <SectionLabel>Signature Coffee</SectionLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0', marginBottom: '3rem' }}>
+          {coffee.map(item => (
+            <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '12px 0', borderBottom: '1px dotted #eee' }}>
+              <div style={{ flex: 1 }}>
+                <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+                {item.desc && <p style={{ fontSize: '11px', color: '#888', fontStyle: 'italic' }}>{item.desc}</p>}
+              </div>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '12px', color: '#ED2E2E', marginLeft: '12px', whiteSpace: 'nowrap' }}>{item.price}</span>
             </div>
-            <div style={{ padding: '2rem', border: '1px solid #333' }}>
-              <p style={{ fontFamily: MONO, fontSize: '8px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#555', marginBottom: '1.5rem' }}>
-                Drinks
-              </p>
-              {drinks.map(item => (
-                <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '8px 0', borderBottom: '1px solid #2a2a2a' }}>
-                  <div>
-                    <span style={{ fontSize: '13px', color: '#ccc', fontWeight: 600 }}>{item.name}</span>
-                    {item.desc && <p style={{ fontSize: '11px', color: '#666', fontStyle: 'italic' }}>{item.desc}</p>}
-                  </div>
-                  <span style={{ fontFamily: MONO, fontSize: '11px', color: RED, marginLeft: '12px', whiteSpace: 'nowrap' }}>{item.price}</span>
-                </div>
-              ))}
+          ))}
+        </div>
+
+        <SectionLabel>Patties &amp; Tarts</SectionLabel>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+          {patties.map(item => (
+            <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '12px 0', borderBottom: '1px dotted #eee' }}>
+              <span style={{ fontWeight: 700, fontSize: '14px', color: '#1A1A1A' }}>{item.name}</span>
+              <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '12px', color: '#ED2E2E', marginLeft: '12px' }}>{item.price}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* ── COFFEE + PATTIES ── */}
-      <div style={{ background: '#FFFFFF', padding: '4rem 0' }}>
-        <div className="container-narrow">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
-            <div>
-              <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: RED, marginBottom: '1.5rem' }}>
-                Signature Coffee
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {coffee.map(item => (
-                  <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', paddingBottom: '0.75rem', borderBottom: '1px dotted #eee' }}>
-                    <div>
-                      <span style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>{item.name}</span>
-                      {item.desc && <p style={{ fontSize: '11px', color: '#888', fontStyle: 'italic' }}>{item.desc}</p>}
-                    </div>
-                    <span style={{ fontFamily: MONO, fontSize: '12px', color: RED, marginLeft: '12px', whiteSpace: 'nowrap' }}>{item.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p style={{ fontFamily: MONO, fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: RED, marginBottom: '1.5rem' }}>
-                Patties &amp; Tarts
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {patties.map(item => (
-                  <div key={item.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: '0.75rem', borderBottom: '1px dotted #eee' }}>
-                    <span style={{ fontWeight: 700, fontSize: '13px', color: DARK }}>{item.name}</span>
-                    <span style={{ fontFamily: MONO, fontSize: '12px', color: RED, marginLeft: '12px' }}>{item.price}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── FOOTER NOTE ── */}
-      <div style={{ background: CREAM, padding: '2rem 0', textAlign: 'center' }}>
+      {/* FOOTER NOTE */}
+      <div style={{ background: '#F5F0E8', padding: '1.5rem 1.25rem', textAlign: 'center' }}>
         <p style={{ fontSize: '12px', color: '#999', fontStyle: 'italic' }}>
           All items cooked in avocado oil, butter &amp; love. No seed oils. Please inform your server of any allergies.
         </p>
