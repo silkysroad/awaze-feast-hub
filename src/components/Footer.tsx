@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 const hours = [
@@ -67,8 +68,9 @@ export function Footer() {
             <p className="text-xs uppercase tracking-widest text-gray-500 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Connect</p>
             <div className="space-y-2 text-sm">
               <a href="https://www.instagram.com/awazenyc" target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-white transition-colors">Instagram</a>
-              <a href="mailto:catering@awaze.nyc" className="block text-gray-300 hover:text-white transition-colors">Catering Inquiries</a>
-              <a href="#reservations" className="block text-gray-300 hover:text-white transition-colors">Reserve a Table</a>
+              <Link to="/catering" className="block text-gray-300 hover:text-white transition-colors">Catering Inquiries</Link>
+              <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About Awaze</Link>
+              <a href="/#reservations" className="block text-gray-300 hover:text-white transition-colors">Reserve a Table</a>
             </div>
           </div>
 
