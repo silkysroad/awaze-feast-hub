@@ -6,14 +6,14 @@ import { useSEO } from '@/hooks/useSEO';
 const MenuPage = () => {
   useSEO({
     title: 'Menu — Awaze Ethiopian Cuisine | Seed Oil Free Ethiopian Food Harlem NYC',
-    description: 'Full menu for Awaze Ethiopian Cuisine in Harlem. Signature plates, build-your-own combos, appetizers, Ethiopian coffee by Buunni, and Jamaican-Ethiopian patties. Every dish cooked in avocado oil and butter — no seed oils ever.',
+    description: 'Full menu for Awaze Ethiopian Cuisine in Harlem. Signature plates, build-your-own combos, stews, sides, Ethiopian coffee by Buunni, and patties. Every dish cooked in avocado oil and butter — no seed oils.',
     canonical: 'https://awaze.nyc/menu',
   });
 
   return (
     <div className="min-h-screen">
       <Header />
-      <div className="pt-16">
+      <div style={{ paddingTop: '64px' }}>
         <Menu />
       </div>
       <Footer />

@@ -19,7 +19,9 @@ export function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src={logo} alt="Awaze Ethiopian Cuisine" className="h-8 w-auto mb-4" style={{ filter: 'invert(1)' }} />
+            <Link to="/">
+              <img src={logo} alt="Awaze Ethiopian Cuisine" className="h-8 w-auto mb-4" style={{ filter: 'invert(1)' }} />
+            </Link>
             <p className="text-xs text-gray-400 leading-relaxed mt-3">
               Seed oil free Ethiopian cuisine.<br />
               Avocado oil · Butter &amp; Love.<br />
@@ -68,9 +70,10 @@ export function Footer() {
             <p className="text-xs uppercase tracking-widest text-gray-500 mb-4" style={{ fontFamily: "'Space Mono', monospace" }}>Connect</p>
             <div className="space-y-2 text-sm">
               <a href="https://www.instagram.com/awazenyc" target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-white transition-colors">Instagram</a>
-              <Link to="/catering" className="block text-gray-300 hover:text-white transition-colors">Catering Inquiries</Link>
-              <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About Awaze</Link>
-              <a href="/#reservations" className="block text-gray-300 hover:text-white transition-colors">Reserve a Table</a>
+              <Link to="/menu" className="block text-gray-300 hover:text-white transition-colors">Full Menu</Link>
+              <Link to="/catering" className="block text-gray-300 hover:text-white transition-colors">Catering</Link>
+              <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About Us</Link>
+              <a href="mailto:catering@awaze.nyc" className="block text-gray-300 hover:text-white transition-colors">catering@awaze.nyc</a>
             </div>
           </div>
 

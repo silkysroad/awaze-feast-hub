@@ -10,18 +10,18 @@ export function useSEO({ title, description, canonical }: SEOProps) {
   useEffect(() => {
     document.title = title;
 
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', description);
+    let meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute('content', description);
     } else {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      metaDesc.setAttribute('content', description);
-      document.head.appendChild(metaDesc);
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      meta.setAttribute('content', description);
+      document.head.appendChild(meta);
     }
 
     if (canonical) {
-      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
       if (link) {
         link.href = canonical;
       } else {
@@ -30,6 +30,18 @@ export function useSEO({ title, description, canonical }: SEOProps) {
         link.href = canonical;
         document.head.appendChild(link);
       }
+    }
+
+    // Update OG tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', description);
+
+    if (canonical) {
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) ogUrl.setAttribute('content', canonical);
     }
   }, [title, description, canonical]);
 }
