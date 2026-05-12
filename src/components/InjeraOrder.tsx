@@ -13,13 +13,6 @@ export function InjeraOrder() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate not Tuesday
-    const date = new Date(formData.pickupDate);
-    if (date.getDay() === 2) {
-      toast.error('Sorry, we are closed on Tuesdays. Please select another day.');
-      return;
-    }
-    
     toast.success('Order submitted! We will confirm via phone.');
     setFormData({ name: '', phone: '', quantity: 1, pickupDate: '' });
   };
@@ -36,7 +29,7 @@ export function InjeraOrder() {
           <h2 className="text-4xl md:text-5xl font-medium mb-4">Injera To-Go</h2>
           <p className="text-muted-foreground mb-2">Pack of 10 — $20</p>
           <p className="text-sm text-muted-foreground mb-12">
-            Pickup only. Available next day after 2pm. Closed Tuesdays.
+            Pickup only. Available next day after 2pm.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -97,7 +90,7 @@ export function InjeraOrder() {
                 onChange={(e) => setFormData({ ...formData, pickupDate: e.target.value })}
                 className="w-full bg-transparent border-b border-border py-3 text-foreground focus:outline-none focus:border-foreground transition-colors cursor-pointer"
               />
-              <p className="text-xs text-muted-foreground mt-2">Tuesdays unavailable</p>
+              <p className="text-xs text-muted-foreground mt-2">Available daily during posted hours</p>
             </div>
 
             <div className="pt-4">

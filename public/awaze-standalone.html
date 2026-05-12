@@ -322,7 +322,7 @@
           <h2 class="hours-title">Hours</h2>
           <div>
             <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
-            <div class="hours-row hours-closed"><span class="hours-day">Tuesday</span><span class="hours-time">Closed</span></div>
+            <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">5pm–10pm</span></div>
             <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
             <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">7am–2pm, 5pm–10pm</span></div>
             <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">7am–10pm</span></div>
@@ -353,7 +353,7 @@
       <div style="max-width: 560px;">
         <h2 class="section-title">Injera To-Go</h2>
         <p class="text-muted mb-8">Pack of 10 — $20</p>
-        <p class="text-xs text-muted mb-48">Pickup only. Available next day after 2pm. Closed Tuesdays.</p>
+        <p class="text-xs text-muted mb-48">Pickup only. Available next day after 2pm.</p>
 
         <form id="injera-form">
           <div class="form-group">
@@ -377,7 +377,7 @@
           <div class="form-group">
             <label class="form-label">Pickup Date (after 2pm)</label>
             <input type="date" class="form-input" id="pickup-date" required>
-            <p class="form-hint">Tuesdays unavailable</p>
+            <p class="form-hint">Available daily during posted hours</p>
           </div>
           <div style="padding-top: 16px;">
             <button type="submit" class="btn" style="width: 100%;">Submit Order</button>
@@ -425,7 +425,7 @@
         </div>
         <div style="font-size: 13px;">
           <div style="display: flex; justify-content: space-between;"><span>Mon</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
-          <div style="display: flex; justify-content: space-between; color: var(--muted-foreground);"><span>Tue</span><span class="font-mono" style="font-size: 11px;">Closed</span></div>
+          <div style="display: flex; justify-content: space-between;"><span>Tue</span><span class="font-mono text-primary" style="font-size: 11px;">5pm–10pm</span></div>
           <div style="display: flex; justify-content: space-between;"><span>Wed</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
           <div style="display: flex; justify-content: space-between;"><span>Thu</span><span class="font-mono text-primary" style="font-size: 11px;">7am–2pm, 5pm–10pm</span></div>
           <div style="display: flex; justify-content: space-between;"><span>Fri</span><span class="font-mono text-primary" style="font-size: 11px;">7am–10pm</span></div>
@@ -452,11 +452,6 @@
     // Form submission
     document.getElementById('injera-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const date = new Date(document.getElementById('pickup-date').value);
-      if (date.getDay() === 2) {
-        alert('Sorry, we are closed on Tuesdays. Please select another day.');
-        return;
-      }
       alert('Order submitted! We will confirm via phone.');
       this.reset();
     });

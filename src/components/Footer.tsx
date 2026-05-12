@@ -3,7 +3,7 @@ import logo from '@/assets/logo.png';
 
 const hours = [
   { day: 'Mon', time: '6PM–10PM' },
-  { day: 'Tue', time: 'Closed' },
+  { day: 'Tue', time: '5PM–10PM' },
   { day: 'Wed', time: '5PM–10PM' },
   { day: 'Thu', time: '5PM–10PM' },
   { day: 'Fri', time: '4PM–10PM' },

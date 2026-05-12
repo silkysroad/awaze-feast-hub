@@ -90,7 +90,7 @@ const DeliveryPage = () => {
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem' }}>Delivery Hours</p>
             <div style={{ fontSize: '14px', color: '#555', lineHeight: 2 }}>
               <p>Monday: 6PM – 10PM</p>
-              <p style={{ color: '#ccc' }}>Tuesday: Closed</p>
+              <p>Tuesday: 5PM – 10PM</p>
               <p>Wednesday – Thursday: 5PM – 10PM</p>
               <p>Friday: 4PM – 10PM</p>
               <p>Saturday: 12PM – 10PM</p>
