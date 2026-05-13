@@ -10,6 +10,9 @@ import AboutPage from "./pages/AboutPage";
 import SeedOilFreePage from "./pages/SeedOilFreePage";
 import EthiopianFoodGuidePage from "./pages/EthiopianFoodGuidePage";
 import DeliveryPage from "./pages/DeliveryPage";
+import HarlemEthiopianPage from "./pages/HarlemEthiopianPage";
+import InjeraNYCPage from "./pages/InjeraNYCPage";
+import DoroWatNYCPage from "./pages/DoroWatNYCPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +31,9 @@ const App = () => (
           <Route path="/seed-oil-free" element={<SeedOilFreePage />} />
           <Route path="/ethiopian-food-guide" element={<EthiopianFoodGuidePage />} />
           <Route path="/delivery" element={<DeliveryPage />} />
+          <Route path="/ethiopian-restaurant-harlem" element={<HarlemEthiopianPage />} />
+          <Route path="/injera-nyc" element={<InjeraNYCPage />} />
+          <Route path="/doro-wat-nyc" element={<DoroWatNYCPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
