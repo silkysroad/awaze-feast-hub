@@ -34,7 +34,7 @@ const restaurantSchema = {
   geo: { '@type': 'GeoCoordinates', latitude: 40.8125, longitude: -73.9533 },
   servesCuisine: ['Ethiopian', 'African'],
   priceRange: '$$',
-  sameAs: ['https://www.instagram.com/awazenyc', 'https://localfats.com/map/awaze-ethiopian-cuisine-new-york-ny'],
+  sameAs: ['https://www.instagram.com/awazenyc'],
 };
 
 const routes = [
