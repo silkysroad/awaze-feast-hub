@@ -40,8 +40,8 @@ const restaurantSchema = {
 const routes = [
   {
     path: '/',
-    title: 'Awaze Ethiopian Cuisine — Seed Oil Free · Harlem, NYC',
-    description: "Awaze is Harlem's seed-oil-free Ethiopian restaurant. Dine-in, delivery, and catering across NYC. Every dish cooked in avocado oil and butter. No canola, no soybean, no seed oils — ever.",
+    title: 'Awaze | Ethiopian Cuisine, Harlem NYC',
+    description: 'Dine in, takeout, family style. Seed oil free. 2288 Frederick Douglass Blvd, Harlem.',
     h1: 'Awaze Ethiopian Cuisine — Seed Oil Free Ethiopian Restaurant in Harlem, NYC',
     body: 'Awaze serves Ethiopian food in Harlem: awaze tibs, doro wat, kitfo, veggie combos, fresh injera, tej honey wine, Ethiopian coffee, dine-in, delivery, reservations, and catering. 2288 Frederick Douglass Blvd, New York, NY 10027.',
     keywords: ['Ethiopian restaurant Harlem', 'seed oil free restaurant NYC', 'Ethiopian food NYC', 'Awaze Ethiopian Cuisine'],
@@ -154,8 +154,14 @@ for (const route of routes) {
   html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/>/, `<meta property="og:title" content="${escapeHtml(route.title)}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/>/, `<meta property="og:description" content="${escapeHtml(route.description)}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${canonical}" />`);
+  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/>/, '<meta property="og:image" content="https://awaze.nyc/og-awaze.jpg" />');
+  html = html.replace(/<meta property="og:image:width" content="[^"]*"\s*\/>/, '<meta property="og:image:width" content="1200" />');
+  html = html.replace(/<meta property="og:image:height" content="[^"]*"\s*\/>/, '<meta property="og:image:height" content="630" />');
+  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/>/, '<meta property="og:image:alt" content="Awaze Ethiopian platter with injera and stews" />');
   html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/>/, `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`);
   html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/>/, `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`);
+  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/>/, '<meta name="twitter:image" content="https://awaze.nyc/og-awaze.jpg" />');
+  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/>/, '<meta name="twitter:image:alt" content="Awaze Ethiopian platter with injera and stews" />');
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${canonical}" />`);
   html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">\n${JSON.stringify({ ...restaurantSchema, url: canonical }, null, 2)}\n    </script>`);
   html = html.replace('<div id="root"></div>', `<div id="root">${renderFallback(route)}</div>`);
