@@ -63,6 +63,14 @@ const routes = [
     keywords: ['Ethiopian catering NYC', 'seed oil free catering New York', 'corporate catering Harlem', 'Awaze catering'],
   },
   {
+    path: '/catering-inquiry',
+    title: 'Catering Inquiry — Awaze | Private Events, Graduation Parties, Catering NYC',
+    description: 'Request Ethiopian catering or a private event at Awaze in Harlem. Food, drinks, staffing, decorations, photographer, and event styling options.',
+    h1: 'Awaze Catering and Private Event Inquiry',
+    body: 'Submit details for Awaze catering, graduation parties, private dinners, restaurant buyouts, food trays, drinks, wine, tej, staffing, decorations, photographers, event styling, setup, and breakdown.',
+    keywords: ['Awaze catering inquiry', 'graduation party catering NYC', 'private event Harlem', 'Ethiopian catering form'],
+  },
+  {
     path: '/about',
     title: 'About Awaze — Seed Oil Free Ethiopian Restaurant in Harlem NYC',
     description: 'Awaze is a Black-owned, seed-oil-free Ethiopian restaurant in Harlem, NYC. Every dish cooked in avocado oil and butter. Dine-in, delivery, and catering at 2288 Frederick Douglass Blvd.',
@@ -173,8 +181,8 @@ for (const route of routes) {
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => {
   const loc = `https://awaze.nyc${route.path === '/' ? '' : route.path}`;
-  const priority = route.path === '/' ? '1.0' : route.path === '/menu' ? '0.9' : ['/catering','/seed-oil-free','/delivery','/ethiopian-restaurant-harlem'].includes(route.path) ? '0.8' : '0.7';
-  const changefreq = ['/','/menu','/catering','/delivery','/ethiopian-restaurant-harlem'].includes(route.path) ? 'weekly' : 'monthly';
+  const priority = route.path === '/' ? '1.0' : route.path === '/menu' ? '0.9' : ['/catering','/catering-inquiry','/seed-oil-free','/delivery','/ethiopian-restaurant-harlem'].includes(route.path) ? '0.8' : '0.7';
+  const changefreq = ['/','/menu','/catering','/catering-inquiry','/delivery','/ethiopian-restaurant-harlem'].includes(route.path) ? 'weekly' : 'monthly';
   return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap);

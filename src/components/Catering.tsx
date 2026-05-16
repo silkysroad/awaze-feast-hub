@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const packages = [
   { name: 'The Spread', price: '$38', unit: 'per person', min: '10 guest minimum', includes: ['2 proteins (beef, lamb, or chicken)', '4 sides & stews', 'Injera — made in-house from teff', 'Serving trays & setup'], ideal: 'Office lunches · Small gatherings · Birthday dinners', featured: false },
   { name: 'The Full Table', price: '$52', unit: 'per person', min: '15 guest minimum', includes: ['3 proteins', '5 sides & stews', 'Injera — made in-house from teff', 'Sambusas to start', 'Serving trays & setup'], ideal: 'Corporate events · Private parties · Baby showers', featured: true },
@@ -8,6 +10,8 @@ const addons = [
   { name: 'Gluten-Free Injera', price: '+$3 / person' },
   { name: 'Extra Protein', price: '+$8 / person' },
   { name: 'Ethiopian Honey Wine (Tej)', price: '+$9 / person' },
+  { name: 'Decorations & Event Styling', price: 'Custom quote' },
+  { name: 'Photographer', price: 'Custom quote' },
   { name: 'Delivery & Setup (within 10 miles)', price: '+$150 flat' },
   { name: 'On-Site Staff', price: '+$45 / hour' },
 ];
@@ -95,17 +99,17 @@ export function Catering() {
         <p style={{ fontSize: '13px', color: '#666', marginBottom: '0.5rem', fontStyle: 'italic' }}>
           Trusted for corporate lunches, film sets, weddings, and private events across NYC.
         </p>
-        <p style={{ fontSize: '14px', color: '#555', marginBottom: '1.75rem' }}>Ready to book? Reach us directly.</p>
-        <a href="mailto:catering@awaze.nyc" style={{
+        <p style={{ fontSize: '14px', color: '#555', marginBottom: '1.75rem' }}>Ready to book? Send the details and we will build the quote.</p>
+        <Link to="/catering-inquiry" style={{
           display: 'block', background: '#ED2E2E', color: '#FFFFFF',
           padding: '18px', fontFamily: "'Space Mono', monospace",
           fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase',
           textDecoration: 'none', fontWeight: 700,
         }}>
-          Get a Quote →
-        </a>
+          Start Catering Inquiry →
+        </Link>
         <p style={{ fontSize: '12px', color: '#aaa', marginTop: '1rem', fontFamily: "'Space Mono', monospace" }}>
-          catering@awaze.nyc · 48hr response
+          awazenyc@gmail.com · private events · catering · decor
         </p>
       </div>
 
