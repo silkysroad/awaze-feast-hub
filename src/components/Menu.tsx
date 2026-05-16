@@ -1,15 +1,15 @@
 import veggiePlatter from '@/assets/gallery/veggie-platter.jpg';
 import beefTibsPlatter from '@/assets/gallery/beef-tibs-platter.jpg';
-import chickenTibs from '@/assets/gallery/chicken-tibs.jpg';
-import meatDish from '@/assets/dishes/meat-dish-1.jpg';
+import chickenPlate from '@/assets/dishes/platter-1.jpg';
+import nubzPlate from '@/assets/dishes/combo-1.jpg';
 import samosas from '@/assets/gallery/samosas.jpg';
 import tomatoSalad from '@/assets/gallery/tomato-salad.jpg';
 
 const signatures = [
   { name: 'Veggie', protein: 'Plant-Based', items: ['Gomen', 'Shiro', 'Tikil Gomen', 'Atakilt Wat', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: veggiePlatter, desc: 'A full spread of our finest vegetable dishes and stews — rich, spiced, and deeply satisfying.' },
   { name: 'The Silk', protein: 'Beef or Lamb', items: ['Awaze Tibs', 'Gomen', 'Tikil Gomen', 'Keysir'], price: 'Rice $18 · Injera $21 · Family $50', photo: beefTibsPlatter, desc: 'Bold berbere-spiced tibs alongside classic sides. The house favorite.' },
-  { name: 'Fente Fire', protein: 'Chicken', items: ['Doro Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: chickenTibs, desc: 'Boneless chicken in a spiced butter sauce with earthy sides.' },
-  { name: 'The Nubz', protein: 'Beef', items: ['Derq Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: meatDish, desc: 'Stir-fried beef with onions and jalapeño — slightly crispy, deeply savory.' },
+  { name: 'Fente Fire', protein: 'Chicken', items: ['Doro Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: chickenPlate, desc: 'Boneless chicken in a spiced butter sauce with earthy sides.' },
+  { name: 'The Nubz', protein: 'Beef', items: ['Derq Tibs', 'Gomen', 'Tikil Gomen', 'Misir Wat'], price: 'Rice $18 · Injera $21 · Family $50', photo: nubzPlate, desc: 'Stir-fried beef with onions and jalapeño — slightly crispy, deeply savory.' },
 ];
 
 const appetizers = [
