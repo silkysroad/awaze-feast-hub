@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import restaurantInterior from '@/assets/restaurant-interior.jpg';
+import restaurantInterior from '@/assets/restaurant-interior-real.jpg';
 
 const SQUARE_BOOKING_URL = 'https://square.site/book/LYH1098JZC66T/awaze-new-york-ny';
 
@@ -17,14 +17,29 @@ export function Reservations() {
 
   return (
     <section id="reservations" style={{ borderTop: '1px solid #e5e5e5' }}>
+      <style>{`
+        @keyframes awazeRoomDrift {
+          0% { transform: scale(1.03) translate3d(0, 0, 0); }
+          100% { transform: scale(1.08) translate3d(-1.5%, -1%, 0); }
+        }
+      `}</style>
 
       {/* Hero photo strip */}
       <div style={{ height: '220px', overflow: 'hidden', position: 'relative' }}>
         <img
           src={restaurantInterior}
           alt="Awaze Ethiopian Cuisine"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'saturate(0.85) brightness(0.75)' }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 58%',
+            filter: 'saturate(1.04) contrast(1.06) brightness(0.82) sepia(0.08)',
+            animation: 'awazeRoomDrift 16s ease-in-out infinite alternate',
+            transformOrigin: 'center',
+          }}
         />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.48))' }} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1.5rem 1.25rem' }}>
           <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#ED2E2E', marginBottom: '6px' }}>
             Reservations
