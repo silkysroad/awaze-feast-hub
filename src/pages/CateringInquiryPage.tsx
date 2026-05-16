@@ -16,6 +16,7 @@ type InquiryForm = {
   serviceStyle: string;
   location: string;
   budget: string;
+  dietaryRestrictions: string;
   foodInterests: string;
   drinkInterests: string;
   addOns: string[];
@@ -36,6 +37,7 @@ const initialForm: InquiryForm = {
   serviceStyle: '',
   location: '',
   budget: '',
+  dietaryRestrictions: '',
   foodInterests: '',
   drinkInterests: '',
   addOns: [],
@@ -168,6 +170,7 @@ export default function CateringInquiryPage() {
       `Location: ${form.location || 'Not provided'}`,
       `Budget: ${form.budget || 'Not provided'}`,
       `Top priority: ${form.priority || 'Not provided'}`,
+      `Dietary restrictions / minimums: ${form.dietaryRestrictions || 'Not provided'}`,
       '',
       'Food and drinks',
       form.foodInterests || 'Not provided',
@@ -277,6 +280,11 @@ export default function CateringInquiryPage() {
             <div style={{ marginTop: '1rem' }}>
               <Field label="Event address or venue">
                 <input style={inputStyle} value={form.location} onChange={event => update('location', event.target.value)} placeholder="Awaze, home, office, venue, or TBD" />
+              </Field>
+            </div>
+            <div style={{ marginTop: '1rem' }}>
+              <Field label="Dietary restrictions / minimums">
+                <input style={inputStyle} value={form.dietaryRestrictions} onChange={event => update('dietaryRestrictions', event.target.value)} placeholder="Vegetarian, vegan, gluten-free, allergies, halal, minimum spend, not sure..." />
               </Field>
             </div>
           </section>

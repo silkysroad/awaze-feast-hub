@@ -11,6 +11,7 @@ type ReservationForm = {
   guests: string;
   occasion: string;
   seating: string;
+  insiders: boolean;
   notes: string;
 };
 
@@ -23,6 +24,7 @@ const initialForm: ReservationForm = {
   guests: '',
   occasion: '',
   seating: '',
+  insiders: true,
   notes: '',
 };
 
@@ -66,7 +68,7 @@ export function Reservations() {
   const [form, setForm] = useState<ReservationForm>(initialForm);
   const [copied, setCopied] = useState(false);
 
-  const update = (field: keyof ReservationForm, value: string) => {
+  const update = (field: keyof ReservationForm, value: string | boolean) => {
     setForm(current => ({ ...current, [field]: value }));
   };
 
@@ -85,6 +87,7 @@ export function Reservations() {
       'Party size: ' + (form.guests || 'Not provided'),
       'Occasion: ' + (form.occasion || 'Not provided'),
       'Seating preference: ' + (form.seating || 'No preference'),
+      'Awaze Insiders opt-in: ' + (form.insiders ? 'Yes - add 200 points when I dine' : 'No'),
       '',
       'Notes',
       form.notes || 'Not provided',
@@ -176,6 +179,17 @@ export function Reservations() {
           </div>
 
           <div style={{ marginTop: '1rem' }}>
+            <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: '#fffaf4', border: '1px solid #d8d0c8', padding: '12px', marginBottom: '1rem', cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={form.insiders}
+                onChange={event => update('insiders', event.target.checked)}
+                style={{ width: 18, height: 18, marginTop: 2, accentColor: '#ED2E2E' }}
+              />
+              <span style={{ fontSize: 13, color: '#555', lineHeight: 1.5 }}>
+                Add me to Awaze Insiders when I dine. I want the 200-point welcome bonus and occasional Awaze updates by phone/email.
+              </span>
+            </label>
             <Field label="Notes">
               <textarea
                 style={{ ...inputStyle, minHeight: 110, resize: 'vertical' }}
@@ -219,4 +233,3 @@ export function Reservations() {
     </section>
   );
 }
-

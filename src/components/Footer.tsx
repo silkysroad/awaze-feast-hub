@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useMemo, useState, type FormEvent } from 'react';
 import logo from '@/assets/logo.png';
 
 const hours = [
@@ -12,9 +13,56 @@ const hours = [
 ];
 
 export function Footer() {
+  const [contact, setContact] = useState({ email: '', phone: '' });
+
+  const signupBody = useMemo(() => {
+    return [
+      'New Awaze customer signup',
+      '',
+      'Email: ' + (contact.email || 'Not provided'),
+      'Phone: ' + (contact.phone || 'Not provided'),
+      '',
+      'Source: awaze.nyc footer',
+      'Requested: Add me to Awaze updates / Awaze Insiders when live',
+    ].join('\n');
+  }, [contact]);
+
+  const submitSignup = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const subject = encodeURIComponent('Awaze customer signup');
+    window.location.href = 'mailto:awazenyc@gmail.com?subject=' + subject + '&body=' + encodeURIComponent(signupBody);
+  };
+
   return (
     <footer className="border-t border-primary/20 py-16" style={{ background: '#1A1A1A', color: '#F5F0E8' }}>
       <div className="container-narrow">
+        <div style={{ border: '1px solid #343434', padding: '1.25rem', marginBottom: '2.5rem', display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', alignItems: 'end' }}>
+          <div>
+            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#ED2E2E', marginBottom: '0.5rem' }}>Awaze updates</p>
+            <h2 style={{ fontFamily: "'Space Mono', monospace", fontSize: '1.15rem', lineHeight: 1.2, margin: 0 }}>Join the list for events, catering drops, and rewards.</h2>
+          </div>
+          <form onSubmit={submitSignup} style={{ display: 'grid', gap: '0.75rem', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}>
+            <input
+              aria-label="Email for Awaze updates"
+              type="email"
+              value={contact.email}
+              onChange={event => setContact(current => ({ ...current, email: event.target.value }))}
+              placeholder="email"
+              style={{ width: '100%', border: '1px solid #444', background: '#111', color: '#F5F0E8', padding: '12px', borderRadius: 0 }}
+            />
+            <input
+              aria-label="Phone for Awaze updates"
+              type="tel"
+              value={contact.phone}
+              onChange={event => setContact(current => ({ ...current, phone: event.target.value }))}
+              placeholder="phone"
+              style={{ width: '100%', border: '1px solid #444', background: '#111', color: '#F5F0E8', padding: '12px', borderRadius: 0 }}
+            />
+            <button type="submit" style={{ background: '#ED2E2E', color: '#fff', border: 0, padding: '13px 16px', fontFamily: "'Space Mono', monospace", fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, cursor: 'pointer' }}>
+              Join
+            </button>
+          </form>
+        </div>
         <div className="grid md:grid-cols-4 gap-10 mb-12">
 
           {/* Brand */}

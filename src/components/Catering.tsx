@@ -99,7 +99,10 @@ export function Catering() {
         <p style={{ fontSize: '13px', color: '#666', marginBottom: '0.5rem', fontStyle: 'italic' }}>
           Trusted for corporate lunches, film sets, weddings, and private events across NYC.
         </p>
-        <p style={{ fontSize: '14px', color: '#555', marginBottom: '1.75rem' }}>Ready to book? Send the details and we will build the quote.</p>
+        <p style={{ fontSize: '14px', color: '#555', marginBottom: '0.75rem' }}>Ready to book? Send the details and we will build the quote.</p>
+        <p style={{ fontSize: '13px', color: '#666', margin: '0 auto 1.75rem', maxWidth: 520, lineHeight: 1.7 }}>
+          Once your quote is approved, Awaze can send a Square invoice with a 25% deposit link to lock in the date.
+        </p>
         <Link to="/catering-inquiry" style={{
           display: 'block', background: '#ED2E2E', color: '#FFFFFF',
           padding: '18px', fontFamily: "'Space Mono', monospace",
