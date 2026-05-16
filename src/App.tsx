@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import MenuPage from "./pages/MenuPage";
 import CateringPage from "./pages/CateringPage";
 import CateringInquiryPage from "./pages/CateringInquiryPage";
+import ReservationsPage from "./pages/ReservationsPage";
 import AboutPage from "./pages/AboutPage";
 import SeedOilFreePage from "./pages/SeedOilFreePage";
 import EthiopianFoodGuidePage from "./pages/EthiopianFoodGuidePage";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/catering" element={<CateringPage />} />
           <Route path="/catering-inquiry" element={<CateringInquiryPage />} />
+          <Route path="/reservations" element={<ReservationsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/seed-oil-free" element={<SeedOilFreePage />} />
           <Route path="/ethiopian-food-guide" element={<EthiopianFoodGuidePage />} />

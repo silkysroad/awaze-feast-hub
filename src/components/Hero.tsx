@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
 export function Hero() {
@@ -17,11 +18,11 @@ export function Hero() {
           Ethiopian Cuisine · Avocado Oil · Butter &amp; Love
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#reservations">
+          <Link to="/reservations">
             <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Reserve a Table
             </Button>
-          </a>
+          </Link>
           <a href="#catering">
             <Button variant="ghost" size="lg" className="text-muted-foreground hover:text-primary">
               Catering →

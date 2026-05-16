@@ -71,6 +71,7 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               <a href="https://www.instagram.com/awazenyc" target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-white transition-colors">Instagram</a>
               <Link to="/menu" className="block text-gray-300 hover:text-white transition-colors">Full Menu</Link>
+              <Link to="/reservations" className="block text-gray-300 hover:text-white transition-colors">Reservations</Link>
               <Link to="/catering" className="block text-gray-300 hover:text-white transition-colors">Catering</Link>
               <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About Us</Link>
               <Link to="/ethiopian-restaurant-harlem" className="block text-gray-300 hover:text-white transition-colors">Ethiopian Restaurant Harlem</Link>
