@@ -1,8 +1,8 @@
 const hours = [
-  { day: 'Monday',    time: '6PM – 10PM' },
-  { day: 'Tuesday',   time: '5PM – 10PM' },
-  { day: 'Wednesday', time: '5PM – 10PM' },
-  { day: 'Thursday',  time: '5PM – 10PM' },
+  { day: 'Monday',    time: '1PM – 10PM' },
+  { day: 'Tuesday',   time: '1PM – 10PM' },
+  { day: 'Wednesday', time: '1PM – 10PM' },
+  { day: 'Thursday',  time: '1PM – 10PM' },
   { day: 'Friday',    time: '4PM – 10PM' },
   { day: 'Saturday',  time: '12PM – 10PM' },
   { day: 'Sunday',    time: '1PM – 10PM' },
@@ -30,7 +30,7 @@ export function Hours() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-6 italic">Open Tuesday evenings, 5PM – 10PM.</p>
+            <p className="text-xs text-muted-foreground mt-6 italic">Open Monday through Thursday, 1PM – 10PM.</p>
           </div>
 
           {/* Location */}

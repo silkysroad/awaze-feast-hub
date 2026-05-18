@@ -3,10 +3,10 @@ import { useMemo, useState, type FormEvent } from 'react';
 import logo from '@/assets/logo.png';
 
 const hours = [
-  { day: 'Mon', time: '6PM–10PM' },
-  { day: 'Tue', time: '5PM–10PM' },
-  { day: 'Wed', time: '5PM–10PM' },
-  { day: 'Thu', time: '5PM–10PM' },
+  { day: 'Mon', time: '1PM–10PM' },
+  { day: 'Tue', time: '1PM–10PM' },
+  { day: 'Wed', time: '1PM–10PM' },
+  { day: 'Thu', time: '1PM–10PM' },
   { day: 'Fri', time: '4PM–10PM' },
   { day: 'Sat', time: '12PM–10PM' },
   { day: 'Sun', time: '1PM–10PM' },
