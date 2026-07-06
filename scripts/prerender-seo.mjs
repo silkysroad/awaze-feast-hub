@@ -4,6 +4,10 @@ import path from 'node:path';
 const distDir = path.resolve('dist');
 const indexPath = path.join(distDir, 'index.html');
 const baseHtml = fs.readFileSync(indexPath, 'utf8');
+const socialImage = {
+  url: 'https://awaze.nyc/og-awaze-real-20260706.jpg',
+  alt: 'Awaze lamb tibs platter with injera and vegetable sides',
+};
 
 const restaurantSchema = {
   '@context': 'https://schema.org',
@@ -170,14 +174,14 @@ for (const route of routes) {
   html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/>/, `<meta property="og:title" content="${escapeHtml(route.title)}" />`);
   html = html.replace(/<meta property="og:description" content="[^"]*"\s*\/>/, `<meta property="og:description" content="${escapeHtml(route.description)}" />`);
   html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${canonical}" />`);
-  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/>/, '<meta property="og:image" content="https://awaze.nyc/og-awaze.jpg" />');
+  html = html.replace(/<meta property="og:image" content="[^"]*"\s*\/>/, `<meta property="og:image" content="${socialImage.url}" />`);
   html = html.replace(/<meta property="og:image:width" content="[^"]*"\s*\/>/, '<meta property="og:image:width" content="1200" />');
   html = html.replace(/<meta property="og:image:height" content="[^"]*"\s*\/>/, '<meta property="og:image:height" content="630" />');
-  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/>/, '<meta property="og:image:alt" content="Awaze Ethiopian platter with injera and stews" />');
+  html = html.replace(/<meta property="og:image:alt" content="[^"]*"\s*\/>/, `<meta property="og:image:alt" content="${socialImage.alt}" />`);
   html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/>/, `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`);
   html = html.replace(/<meta name="twitter:description" content="[^"]*"\s*\/>/, `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`);
-  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/>/, '<meta name="twitter:image" content="https://awaze.nyc/og-awaze.jpg" />');
-  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/>/, '<meta name="twitter:image:alt" content="Awaze Ethiopian platter with injera and stews" />');
+  html = html.replace(/<meta name="twitter:image" content="[^"]*"\s*\/>/, `<meta name="twitter:image" content="${socialImage.url}" />`);
+  html = html.replace(/<meta name="twitter:image:alt" content="[^"]*"\s*\/>/, `<meta name="twitter:image:alt" content="${socialImage.alt}" />`);
   html = html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${canonical}" />`);
   html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">\n${JSON.stringify({ ...restaurantSchema, url: canonical }, null, 2)}\n    </script>`);
   html = html.replace('<div id="root"></div>', `<div id="root">${renderFallback(route)}</div>`);
