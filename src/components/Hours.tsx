@@ -1,11 +1,11 @@
 const hours = [
-  { day: 'Monday',    time: '1PM – 10PM' },
-  { day: 'Tuesday',   time: '1PM – 10PM' },
-  { day: 'Wednesday', time: '1PM – 10PM' },
-  { day: 'Thursday',  time: '1PM – 10PM' },
-  { day: 'Friday',    time: '1PM – 10PM' },
-  { day: 'Saturday',  time: '12PM – 10PM' },
-  { day: 'Sunday',    time: '1PM – 10PM' },
+  { day: 'Monday',    time: '3PM – 10PM' },
+  { day: 'Tuesday',   time: '3PM – 10PM' },
+  { day: 'Wednesday', time: '3PM – 10PM' },
+  { day: 'Thursday',  time: '3PM – 10PM' },
+  { day: 'Friday',    time: '2PM – 10PM' },
+  { day: 'Saturday',  time: '2PM – 10PM' },
+  { day: 'Sunday',    time: '2PM – 10PM' },
 ];
 
 export function Hours() {
@@ -30,7 +30,7 @@ export function Hours() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-6 italic">Open Monday through Thursday, 1PM – 10PM.</p>
+            <p className="text-xs text-muted-foreground mt-6 italic">Open Monday through Thursday, 3PM – 10PM.</p>
           </div>
 
           {/* Location */}

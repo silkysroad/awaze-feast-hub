@@ -3,13 +3,13 @@ import { useMemo, useState, type FormEvent } from 'react';
 import logo from '@/assets/logo.png';
 
 const hours = [
-  { day: 'Mon', time: '1PM–10PM' },
-  { day: 'Tue', time: '1PM–10PM' },
-  { day: 'Wed', time: '1PM–10PM' },
-  { day: 'Thu', time: '1PM–10PM' },
-  { day: 'Fri', time: '1PM–10PM' },
-  { day: 'Sat', time: '12PM–10PM' },
-  { day: 'Sun', time: '1PM–10PM' },
+  { day: 'Mon', time: '3PM–10PM' },
+  { day: 'Tue', time: '3PM–10PM' },
+  { day: 'Wed', time: '3PM–10PM' },
+  { day: 'Thu', time: '3PM–10PM' },
+  { day: 'Fri', time: '2PM–10PM' },
+  { day: 'Sat', time: '2PM–10PM' },
+  { day: 'Sun', time: '2PM–10PM' },
 ];
 
 export function Footer() {

@@ -213,7 +213,7 @@ export function Reservations() {
         <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #eee', display: 'grid', gap: '0.75rem', color: '#777', fontSize: '13px', lineHeight: 1.6 }}>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
             <span style={{ color: '#ED2E2E', fontWeight: 700, flexShrink: 0 }}>✦</span>
-            <span>Open daily · Monday-Thursday 1PM-10PM</span>
+            <span>Open daily · Monday-Thursday 3PM-10PM · Friday-Sunday 2PM-10PM</span>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
             <span style={{ color: '#ED2E2E', fontWeight: 700, flexShrink: 0 }}>✦</span>

@@ -89,10 +89,8 @@ const DeliveryPage = () => {
           <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem' }}>Delivery Hours</p>
             <div style={{ fontSize: '14px', color: '#555', lineHeight: 2 }}>
-              <p>Monday – Thursday: 1PM – 10PM</p>
-              <p>Friday: 1PM – 10PM</p>
-              <p>Saturday: 12PM – 10PM</p>
-              <p>Sunday: 1PM – 10PM</p>
+              <p>Monday – Thursday: 3PM – 10PM</p>
+              <p>Friday – Sunday: 2PM – 10PM</p>
             </div>
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '11px', color: '#999', marginTop: '1.5rem' }}>
               Delivering from 2288 Frederick Douglass Blvd · Harlem, NYC
