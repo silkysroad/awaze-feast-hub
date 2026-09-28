@@ -1,3 +1,4 @@
+import { closureMessage, isClosureDate, isTemporarilyClosed } from '@/lib/closure';
 import { useMemo, useState, type FormEvent, type ReactNode } from 'react';
 import { CalendarDays, Clipboard, Phone } from 'lucide-react';
 import restaurantInterior from '@/assets/restaurant-interior-real.jpg';
@@ -101,10 +102,12 @@ export function Reservations() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isClosureDate(form.date)) { window.alert(closureMessage); return; }
     window.location.href = mailtoHref;
   };
 
   const copyReservation = async () => {
+    if (isClosureDate(form.date)) { window.alert(closureMessage); return; }
     await navigator.clipboard.writeText(reservationText);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2200);
@@ -156,7 +159,10 @@ export function Reservations() {
               <input style={inputStyle} type="email" value={form.email} onChange={event => update('email', event.target.value)} />
             </Field>
             <Field label="Date">
-              <input required style={inputStyle} type="date" value={form.date} onChange={event => update('date', event.target.value)} />
+              <input required style={inputStyle} type="date" min={isTemporarilyClosed() ? '2026-10-05' : undefined} value={form.date} onChange={event => {
+                update('date', event.target.value);
+                event.target.setCustomValidity(isClosureDate(event.target.value) ? closureMessage : '');
+              }} />
             </Field>
             <Field label="Time">
               <input required style={inputStyle} type="time" value={form.time} onChange={event => update('time', event.target.value)} />
@@ -213,7 +219,7 @@ export function Reservations() {
         <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #eee', display: 'grid', gap: '0.75rem', color: '#777', fontSize: '13px', lineHeight: 1.6 }}>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
             <span style={{ color: '#ED2E2E', fontWeight: 700, flexShrink: 0 }}>✦</span>
-            <span>Open daily · Monday-Thursday 3PM-10PM · Friday-Sunday 2PM-10PM</span>
+            <span>{isTemporarilyClosed() ? closureMessage : 'Open daily · Monday-Thursday 3PM-10PM · Friday-Sunday 2PM-10PM'}</span>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
             <span style={{ color: '#ED2E2E', fontWeight: 700, flexShrink: 0 }}>✦</span>

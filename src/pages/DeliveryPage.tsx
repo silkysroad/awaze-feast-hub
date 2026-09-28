@@ -1,3 +1,4 @@
+import { closureMessage, isTemporarilyClosed } from '@/lib/closure';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useSEO } from '@/hooks/useSEO';
@@ -36,9 +37,9 @@ const DeliveryPage = () => {
         {/* Order Buttons */}
         <section style={{ background: '#FFFFFF', padding: '3rem 1.25rem' }}>
           <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '1.5rem', textAlign: 'center' }}>Order Now</p>
+            <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '1.5rem', textAlign: 'center' }}>{isTemporarilyClosed() ? 'Temporarily closed' : 'Order Now'}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {platforms.map(p => (
+              {!isTemporarilyClosed() && platforms.map(p => (
                 <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" style={{
                   display: 'block', background: '#1A1A1A', color: '#F5F0E8', padding: '18px',
                   fontFamily: "'Space Mono', monospace", fontSize: '13px', letterSpacing: '0.1em',
@@ -50,7 +51,7 @@ const DeliveryPage = () => {
               ))}
             </div>
             <p style={{ fontSize: '12px', color: '#999', textAlign: 'center', marginTop: '1rem', fontStyle: 'italic' }}>
-              Delivery hours match our restaurant hours. Fees and minimums set by each platform.
+              {isTemporarilyClosed() ? closureMessage : 'Delivery hours match our restaurant hours. Fees and minimums set by each platform.'}
             </p>
           </div>
         </section>
@@ -89,8 +90,7 @@ const DeliveryPage = () => {
           <div style={{ maxWidth: '500px', margin: '0 auto', textAlign: 'center' }}>
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#888', marginBottom: '1rem' }}>Delivery Hours</p>
             <div style={{ fontSize: '14px', color: '#555', lineHeight: 2 }}>
-              <p>Monday – Thursday: 3PM – 10PM</p>
-              <p>Friday – Sunday: 2PM – 10PM</p>
+              {isTemporarilyClosed() ? <p>{closureMessage}</p> : <><p>Monday – Thursday: 3PM – 10PM</p><p>Friday – Sunday: 2PM – 10PM</p></>}
             </div>
             <p style={{ fontFamily: "'Space Mono', monospace", fontSize: '11px', color: '#999', marginTop: '1.5rem' }}>
               Delivering from 2288 Frederick Douglass Blvd · Harlem, NYC

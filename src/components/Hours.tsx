@@ -1,3 +1,4 @@
+import { closureMessage, isTemporarilyClosed } from '@/lib/closure';
 const hours = [
   { day: 'Monday',    time: '3PM – 10PM' },
   { day: 'Tuesday',   time: '3PM – 10PM' },
@@ -25,12 +26,12 @@ export function Hours() {
                 >
                   <span className="uppercase tracking-wider font-medium">{item.day}</span>
                   <span className="font-mono" style={{ color: item.time === 'Closed' ? undefined : '#ED2E2E', fontFamily: "'Space Mono', monospace" }}>
-                    {item.time}
+                    {isTemporarilyClosed() ? 'Closed' : item.time}
                   </span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-6 italic">Open Monday through Thursday, 3PM – 10PM.</p>
+            <p className="text-xs text-muted-foreground mt-6 italic">{isTemporarilyClosed() ? closureMessage : 'Open Monday through Thursday, 3PM – 10PM.'}</p>
           </div>
 
           {/* Location */}
