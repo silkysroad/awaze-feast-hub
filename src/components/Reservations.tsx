@@ -159,7 +159,7 @@ export function Reservations() {
               <input style={inputStyle} type="email" value={form.email} onChange={event => update('email', event.target.value)} />
             </Field>
             <Field label="Date">
-              <input required style={inputStyle} type="date" min={isTemporarilyClosed() ? '2026-10-06' : undefined} value={form.date} onChange={event => {
+              <input required style={inputStyle} type="date" min={isTemporarilyClosed() ? '2026-10-16' : undefined} value={form.date} onChange={event => {
                 update('date', event.target.value);
                 event.target.setCustomValidity(isClosureDate(event.target.value) ? closureMessage : '');
               }} />
