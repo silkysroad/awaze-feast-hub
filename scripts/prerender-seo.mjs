@@ -18,7 +18,7 @@ const restaurantSchema = {
   telephone: '(917) 639-3112',
   menu: 'https://awaze.nyc/menu',
   acceptsReservations: true,
-  specialOpeningHoursSpecification: [{ '@type': 'OpeningHoursSpecification', validFrom: '2026-10-15', validThrough: '2026-10-15', opens: '00:00', closes: '00:00' }],
+  specialOpeningHoursSpecification: [{ '@type': 'OpeningHoursSpecification', validFrom: '2026-11-26', validThrough: '2026-11-26', opens: '00:00', closes: '00:00' }],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday', opens: '15:00', closes: '22:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '15:00', closes: '22:00' },

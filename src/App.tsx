@@ -1,4 +1,4 @@
-import { isTemporarilyClosed } from './lib/closure';
+import { showClosureNotice } from './lib/closure';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -26,7 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div style={{ paddingTop: isTemporarilyClosed() ? 84 : 0 }}>
+        <div style={{ paddingTop: showClosureNotice() ? 84 : 0 }}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/menu" element={<MenuPage />} />
